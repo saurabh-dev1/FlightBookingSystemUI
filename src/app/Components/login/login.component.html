@@ -1,0 +1,61 @@
+<nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">My Ways</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<img class="wave" src="../../assets/wave.png">
+<div class="container">
+  <div class="img">
+    <img src="../../assets/bg.png">
+  </div>
+  <div class="login-content">
+    <form [formGroup]="loginform">
+      <img src="../../assets/avatar.png">
+      <h2 class="title">Welcome</h2>
+             <div class="input-div one">
+                <div class="i">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="div" >
+                    <input formControlName="userName" type="text" class="input" placeholder="username">
+                </div>
+             </div>
+             <small *ngIf="loginform.controls['userName'].dirty && loginform.hasError('required','userName')" class="text-danger">*username is required</small>
+             <div class="input-div pass">
+                <div class="i">
+                   <i class="fa fa-lock"></i>
+                </div>
+                <div class="div">
+                   <input formControlName="password" type="password" class="input" placeholder="password">
+                </div>
+              </div>
+              <small *ngIf="loginform.controls['password'].dirty && loginform.hasError('required','password')" class="text-danger">*password is required</small>
+            <div class="form inline fr mt-4">
+              <a id="forget" class="font-weight-bold">Forget Password</a>
+            </div>
+            <button (click)="onLogin()" type="submit" class="btn" value="Login">Login</button>
+            <div class="text-center pt-4 text-muted">Don't have an account <a class="signUp" routerLink="/Login/SignUp">Sign Up</a></div>
+            <!-- <p>Not a Member?<a class="signUp" routerLink="/Login/SignUp">Create account</a></p> -->
+          </form>
+      </div>
+  </div>
+  <script type="text/javascript" src="js/main.js"></script>
+

@@ -1,0 +1,78 @@
+<nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">My Ways</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <img class="background-image">
+  <div class="login-content">
+    <form [formGroup]="signUpform">
+      <img src="../../assets/avatar.png">
+      <h2 class="title">Register</h2>
+
+      <div class="input-div one">
+        <div class="i">
+          <i class="fa fa-user"></i>
+        </div>
+        <div class="div">
+          <input formControlName="userName" type="text" class="input" placeholder="Name">
+        </div>
+      </div>
+      <small *ngIf="signUpform.controls['userName'].dirty && signUpform.hasError('required','userName')" class="text-danger">*name is required</small>
+
+      <div class="input-div one">
+        <div class="i">
+          <i class="fa fa-solid fa-envelope"></i>
+        </div>
+        <div class="div">
+          <input formControlName="emailAddress" type="email" class="input" placeholder="Email">
+        </div>
+      </div>
+      <small *ngIf="signUpform.controls['emailAddress'].dirty && signUpform.hasError('required','emailAddress')" class="text-danger">*email is required</small>
+
+      <div class="input-div pass">
+        <div class="i">
+          <i class="fa fa-lock"></i>
+        </div>
+        <div class="div">
+          <input formControlName="password" type="password" class="input" placeholder="Password">
+        </div>
+      </div>
+      <small *ngIf="signUpform.controls['password'].dirty && signUpform.hasError('required','password')" class="text-danger">*password is required</small>
+
+      <div class="input-div pass">
+        <div class="i">
+          <i class="fa fa-solid fa-phone"></i>
+        </div>
+        <div class="div">
+          <input formControlName="phoneNo" type="text" class="input" placeholder="Mobile No.">
+        </div>
+      </div>
+
+      <small *ngIf="signUpform.controls['phoneNo'].dirty && signUpform.hasError('required','phoneNo')" class="text-danger">*phoneno is required</small>
+
+
+
+      <button (click)="onSignUp()" type="submit" class="btn" value="signUp" >SignUp</button>
+
+    </form>
+  </div>
+</div>
