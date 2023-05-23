@@ -1,5 +1,7 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FlightsService } from 'src/app/Services/flights/flights.service';
+import { FlightModule } from 'src/app/models/flight/flight.module';
 
 @Component({
   selector: 'app-flights',
@@ -8,19 +10,20 @@ import { FlightsService } from 'src/app/Services/flights/flights.service';
 })
 export class FlightsComponent implements OnInit{
 
-  constructor (private flightService: FlightsService){}
+  constructor (private flightService: FlightsService, ){}
 
+  flights: FlightModule[] = [];
   ngOnInit(): void {
-      //fetch flights
-      this.flightService.getFlights()
-      .subscribe({
-        next: (flight) => {
-          console.log(flight);
-        },
-        error:(response) =>{
-          console.log(response);
-        }
-      })
+
+     this.flightService.getFlights()
+     .subscribe({
+      next: (flights) =>{
+        this.flights = flights;
+      },
+      error:(response) =>{
+        console.log(response);
+      }
+     })
 
   }
     }

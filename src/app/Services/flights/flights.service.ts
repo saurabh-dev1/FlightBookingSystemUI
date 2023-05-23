@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { FlightModule } from 'src/app/models/flight/flight.module';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,11 @@ export class FlightsService {
   constructor(private httpClient: HttpClient) { }
 
 
-  getFlights() : Observable<any>{
-    return this.httpClient.get<any>(this.baseApiUrl + '/Flight');
+  getFlights() : Observable<FlightModule[]>{
+    return this.httpClient.get<FlightModule[]>(this.baseApiUrl + '/Flight');
+  }
+
+  addFlight(addFlightRequest : FlightModule): Observable<FlightModule>{
+    return this.httpClient.post<FlightModule>(this.baseApiUrl + '/Flight', addFlightRequest);
   }
 }

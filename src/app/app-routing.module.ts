@@ -5,6 +5,8 @@ import { AdminNavbarComponent } from './Components/admin-navbar/admin-navbar.com
 import { LoginComponent } from './Components/login/login.component';
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { FlightsComponent } from './Components/flights/flights.component';
+import { AddFlightsComponent } from './Components/flights/add-flights/add-flights.component';
 
 
 
@@ -23,6 +25,10 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'Admin/flights',
+    component: FlightsComponent
+  },
+  {
     path: 'SignUp',
     component: SignUpComponent
   },
@@ -33,6 +39,14 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent
+  },
+  {
+    path: 'Admin/flights/Admin',
+    component: AdminNavbarComponent
+  },
+  {
+    path: 'Admin/flights/Admin/flights/add',
+    component: AddFlightsComponent
   }
 ];
 

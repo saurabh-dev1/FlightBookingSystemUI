@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +14,7 @@ import { FlightsComponent } from './Components/flights/flights.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NgToastModule } from 'ng-angular-popup';
+import { AddFlightsComponent } from './Components/flights/add-flights/add-flights.component';
 
 
 
@@ -28,6 +29,7 @@ import { NgToastModule } from 'ng-angular-popup';
     SignUpComponent,
     FlightsComponent,
     DashboardComponent,
+    AddFlightsComponent,
 
 
 
@@ -41,6 +43,7 @@ import { NgToastModule } from 'ng-angular-popup';
     HttpClientModule,
     ToastrModule.forRoot(),
     NgToastModule,
+    FormsModule,
 
   ],
   providers: [],

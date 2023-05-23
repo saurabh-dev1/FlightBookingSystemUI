@@ -1,1 +1,58 @@
-<p>flights works!</p>
+<nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">My Ways</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="Admin">Back</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="Admin/flights/add">Add FLights</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container my-5">
+
+<table class="table table-striped"  *ngIf="flights">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Number</th>
+      <th scope="col">Departure City</th>
+      <th scope="col">Destination</th>
+      <th scope="col">Time</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let flight of flights">
+      <th scope="row">{{flight.flightId}}</th>
+      <td>{{flight.flightName}}</td>
+      <td>{{flight.flightNumber}}</td>
+      <td>{{flight.departureCity}}</td>
+      <td>{{flight.arrivalCity}}</td>
+      <td>{{flight.departureDateTime}}</td>
+      <td>{{flight.basePrice}}</td>
+    </tr>
+
+
+  </tbody>
+</table>
+
+  <p *ngIf="!flights">No Flights Found</p>
+</div>

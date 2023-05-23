@@ -1,0 +1,36 @@
+<div class="container my-5">
+  <h1 class="mb-3">Add New Flight</h1>
+
+  <form #form="ngForm" (ngSubmit)="addFlight()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Id</label>
+      <input type="text" class="form-control" id="name" name="flightId" [(ngModel)]="addFlightRequest.flightId">
+    </div>
+    <div class="mb-3">
+      <label for="name" class="form-label">Flight Name</label>
+      <input type="text" class="form-control" id="name" name="flightName" [(ngModel)]="addFlightRequest.flightName">
+    </div>
+    <div class="mb-3">
+      <label for="number" class="form-label">Flight Number</label>
+      <input type="text" class="form-control" id="number" name="flightNumber" [(ngModel)]="addFlightRequest.flightNumber">
+    </div>
+    <div class="mb-3">
+      <label for="city" class="form-label">Departure City</label>
+      <input type="text" class="form-control" id="city" name="departureCity" [(ngModel)]="addFlightRequest.departureCity">
+    </div>
+    <div class="mb-3">
+      <label for="arr_city" class="form-label">Arrival City</label>
+      <input type="text" class="form-control" id="arr_city" name="arrivalCity" [(ngModel)]="addFlightRequest.arrivalCity" >
+    </div>
+    <div class="mb-3">
+      <label for="time" class="form-label">Time</label>
+      <input type="date" class="form-control" id="time" name="departureDateTime" [(ngModel)]="addFlightRequest.departureDateTime">
+    </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">Price</label>
+      <input type="text" class="form-control" id="price" name="basePrice" [(ngModel)]="addFlightRequest.basePrice" >
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
