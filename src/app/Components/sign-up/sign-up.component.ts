@@ -31,7 +31,6 @@ export class SignUpComponent implements OnInit{
       .subscribe({
         next: (res) =>{
           console.log(res.message);
-
           this.signUpform.reset();
           this.toast.success({detail:"SUCCESS", summary:"please Login now!" ,duration: 5000});
           this.router.navigate(['Login'])
