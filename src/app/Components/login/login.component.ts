@@ -31,10 +31,10 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (res) =>{
           this.result = res
-          console.log(res.message);
-          // this.loginform.reset();
+          console.log(res);
+          this.auth.storeToken(res.token);
           this.toast.success({detail:"SUCCESS", duration: 5000});
-          // this.router.navigate(['dashboard'])
+
           if(this.result.message == "Admin")
           {
           this.router.navigate(['Admin']);
