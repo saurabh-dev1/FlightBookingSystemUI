@@ -1,28 +1,91 @@
-<nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
+<header>
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">My Ways</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="Admin">Back</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="Admin/flights/add">Add FLights</a>
-          </li>
+  <div class="row flex-nowrap">
+      <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+          <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+              <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                  <span class="fs-5 d-none d-sm-inline">Menu</span>
+              </a>
+              <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                  <li class="nav-item">
+                      <a href="#" class="nav-link align-middle px-0">
+                          <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                          <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
 
-        </ul>
+                  </li>
+                  <li>
+                      <a data-bs-toggle="collapse" class="nav-link px-0 align-middle" routerLink="flights">
+                          <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline" >Flights</span> </a>
+
+                  </li>
+
+                  <li>
+                      <a href="#" class="nav-link px-0 align-middle">
+                          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Users</span> </a>
+                  </li>
+              </ul>
+              <hr>
+              <div class="dropdown pb-4">
+                  <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                      <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+                      <span class="d-none d-sm-inline mx-1">Me</span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                      <li><a class="dropdown-item" href="#">New project...</a></li>
+                      <li><a class="dropdown-item" href="#">Settings</a></li>
+                      <li><a class="dropdown-item" href="#">Profile</a></li>
+                      <li>
+                          <hr class="dropdown-divider">
+                      </li>
+                      <li><a class="dropdown-item" href="#">Sign out</a></li>
+                  </ul>
+              </div>
+          </div>
       </div>
-    </div>
+      <div class="col py-3">
+        <div class="container my-5">
+
+          <table class="table table-striped"  *ngIf="flights">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Number</th>
+                <th scope="col">Departure City</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Time</th>
+                <th scope="col">Price</th>
+                <th> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let flight of flights">
+                <th scope="row">{{flight.flightId}}</th>
+                <td>{{flight.flightName}}</td>
+                <td>{{flight.flightNumber}}</td>
+                <td>{{flight.departureCity}}</td>
+                <td>{{flight.arrivalCity}}</td>
+                <td>{{flight.departureDateTime}}</td>
+                <td>{{flight.basePrice}}</td>
+                <td><button (click)="editFlight()">View</button></td>
+              </tr>
+
+
+            </tbody>
+          </table>
+          <button (click)="navigateToAddFlight()">Add Flight</button>
+
+            <p *ngIf="!flights">No Flights Found</p>
+          </div>
+      </div>
   </div>
-</nav>
+</div>
+</header>
+
 
 
 <div class="container my-5">
@@ -37,6 +100,7 @@
       <th scope="col">Destination</th>
       <th scope="col">Time</th>
       <th scope="col">Price</th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
@@ -48,6 +112,7 @@
       <td>{{flight.arrivalCity}}</td>
       <td>{{flight.departureDateTime}}</td>
       <td>{{flight.basePrice}}</td>
+      <td><a [routerLink]="['flights','edit',flight.flightId]">View</a></td>
     </tr>
 
 

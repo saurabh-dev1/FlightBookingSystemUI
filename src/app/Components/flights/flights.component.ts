@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FlightsService } from 'src/app/Services/flights/flights.service';
 import { FlightModule } from 'src/app/models/flight/flight.module';
 
@@ -10,7 +11,7 @@ import { FlightModule } from 'src/app/models/flight/flight.module';
 })
 export class FlightsComponent implements OnInit{
 
-  constructor (private flightService: FlightsService, ){}
+  constructor (private flightService: FlightsService, private router: Router){}
 
   flights: FlightModule[] = [];
   ngOnInit(): void {
@@ -26,4 +27,11 @@ export class FlightsComponent implements OnInit{
      })
 
   }
+  navigateToAddFlight() {
+    this.router.navigateByUrl('addFlight');
+  }
+  editFlight() {
+    this.router.navigateByUrl('Edit/:id');
+  }
+
     }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FlightsService } from 'src/app/Services/flights/flights.service';
 import { FlightModule } from 'src/app/models/flight/flight.module';
 
@@ -25,17 +26,21 @@ export class AddFlightsComponent implements OnInit {
 
     };
 
-    constructor(private flightService: FlightsService){}
+    constructor(private flightService: FlightsService, private router: Router){}
 
   ngOnInit(): void {
 
   }
 
   addFlight(){
+
     this.flightService.addFlight(this.addFlightRequest)
     .subscribe({
-      next: (employee) => {
-        console.log(employee);
+
+      next: (flight) => {
+        debugger
+        //console.log(flight);
+        this.router.navigate(['Admin/flights']);
       }
     })
   }

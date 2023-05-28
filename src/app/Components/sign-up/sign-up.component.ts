@@ -22,6 +22,28 @@ export class SignUpComponent implements OnInit{
       phoneNo: ['',Validators.required],
 
     })
+
+    const inputs = document.querySelectorAll(".input");
+
+    const addClass = (event: Event) => {
+      const parent = (event.target as HTMLElement).parentNode?.parentNode as HTMLElement;
+      if (parent) {
+        parent.classList.add("focus");
+      }
+    };
+
+    const removeClass = (event: Event) => {
+      const parent = (event.target as HTMLElement).parentNode?.parentNode as HTMLElement;
+      if (parent && !(event.target as HTMLInputElement).value) {
+        parent.classList.remove("focus");
+      }
+    };
+
+    inputs.forEach(input => {
+      input.addEventListener("focus", addClass);
+      input.addEventListener("blur", removeClass);
+    });
+
   }
   onSignUp(){
     if (this.signUpform.valid){

@@ -7,6 +7,7 @@ import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { FlightsComponent } from './Components/flights/flights.component';
 import { AddFlightsComponent } from './Components/flights/add-flights/add-flights.component';
+import { EditFlightsComponent } from './Components/flights/edit-flights/edit-flights.component';
 
 
 
@@ -17,16 +18,32 @@ const routes: Routes = [
     component: HomePageComponent
   },
   {
-    path: 'Admin',
-    component: AdminNavbarComponent
+    path: 'Admin', children:[{
+      path: '', component: AdminNavbarComponent
+    },
+  {
+    path:'flights', component: FlightsComponent
   },
+
+  ]},
+  {
+    path:'addFlight', component: AddFlightsComponent
+  },
+
+  {
+    path: 'flights',
+  component: FlightsComponent
+    },
+
+
+  {
+    path: 'Edit/:id', component: EditFlightsComponent
+  },
+
+
   {
     path: 'Login',
     component: LoginComponent
-  },
-  {
-    path: 'Admin/flights',
-    component: FlightsComponent
   },
   {
     path: 'SignUp',
@@ -44,10 +61,6 @@ const routes: Routes = [
     path: 'Admin/flights/Admin',
     component: AdminNavbarComponent
   },
-  {
-    path: 'Admin/flights/Admin/flights/add',
-    component: AddFlightsComponent
-  }
 ];
 
 @NgModule({

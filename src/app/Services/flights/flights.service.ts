@@ -16,6 +16,6 @@ export class FlightsService {
   }
 
   addFlight(addFlightRequest : FlightModule): Observable<FlightModule>{
-    return this.httpClient.post<FlightModule>(this.baseApiUrl + '/Flight', addFlightRequest);
+    return this.httpClient.post<FlightModule>(this.baseApiUrl + '/Flight/Add', addFlightRequest);
   }
 }

@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { AuthService } from 'src/app/Services/auth.service';
 
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,6 +24,29 @@ export class LoginComponent implements OnInit {
       token:[''],
       roles:['']
     })
+    // Javascript file
+    const inputs = document.querySelectorAll(".input");
+
+    const addClass = (event: Event) => {
+      const parent = (event.target as HTMLElement).parentNode?.parentNode as HTMLElement;
+      if (parent) {
+        parent.classList.add("focus");
+      }
+    };
+
+    const removeClass = (event: Event) => {
+      const parent = (event.target as HTMLElement).parentNode?.parentNode as HTMLElement;
+      if (parent && !(event.target as HTMLInputElement).value) {
+        parent.classList.remove("focus");
+      }
+    };
+
+    inputs.forEach(input => {
+      input.addEventListener("focus", addClass);
+      input.addEventListener("blur", removeClass);
+    });
+
+
   }
 
   onLogin(){
@@ -33,6 +58,7 @@ export class LoginComponent implements OnInit {
           this.result = res
           console.log(res);
           this.auth.storeToken(res.token);
+
           this.toast.success({detail:"SUCCESS", duration: 5000});
 
           if(this.result.message == "Admin")
@@ -64,6 +90,7 @@ export class LoginComponent implements OnInit {
       }
     })
   }
+
 
 
 }
