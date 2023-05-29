@@ -17,15 +17,20 @@ const routes: Routes = [
     path: '',
     component: HomePageComponent
   },
+
+
+
   {
     path: 'Admin', children:[{
       path: '', component: AdminNavbarComponent
     },
   {
     path:'flights', component: FlightsComponent
-  },
+  }
+ ]},
 
-  ]},
+
+
   {
     path:'addFlight', component: AddFlightsComponent
   },
@@ -34,13 +39,9 @@ const routes: Routes = [
     path: 'flights',
   component: FlightsComponent
     },
-
-
   {
     path: 'Edit/:id', component: EditFlightsComponent
   },
-
-
   {
     path: 'Login',
     component: LoginComponent

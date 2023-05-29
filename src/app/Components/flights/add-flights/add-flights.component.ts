@@ -38,7 +38,7 @@ export class AddFlightsComponent implements OnInit {
     .subscribe({
 
       next: (flight) => {
-        debugger
+
         //console.log(flight);
         this.router.navigate(['Admin/flights']);
       }

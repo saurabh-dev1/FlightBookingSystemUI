@@ -71,13 +71,15 @@
                 <td>{{flight.arrivalCity}}</td>
                 <td>{{flight.departureDateTime}}</td>
                 <td>{{flight.basePrice}}</td>
-                <td><button (click)="editFlight()">View</button></td>
-              </tr>
+                <td><button class="btn btn-primary" type = "submit" (click)="editFlight(flight.flightId)">View</button>
+                    </td>
+
+                 </tr>
 
 
             </tbody>
           </table>
-          <button (click)="navigateToAddFlight()">Add Flight</button>
+          <button class="btn btn-primary" type = "submit" (click)="AddFlight()">Add Flight</button>
 
             <p *ngIf="!flights">No Flights Found</p>
           </div>
@@ -88,36 +90,3 @@
 
 
 
-<div class="container my-5">
-
-<table class="table table-striped"  *ngIf="flights">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Name</th>
-      <th scope="col">Number</th>
-      <th scope="col">Departure City</th>
-      <th scope="col">Destination</th>
-      <th scope="col">Time</th>
-      <th scope="col">Price</th>
-      <th> </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let flight of flights">
-      <th scope="row">{{flight.flightId}}</th>
-      <td>{{flight.flightName}}</td>
-      <td>{{flight.flightNumber}}</td>
-      <td>{{flight.departureCity}}</td>
-      <td>{{flight.arrivalCity}}</td>
-      <td>{{flight.departureDateTime}}</td>
-      <td>{{flight.basePrice}}</td>
-      <td><a [routerLink]="['flights','edit',flight.flightId]">View</a></td>
-    </tr>
-
-
-  </tbody>
-</table>
-
-  <p *ngIf="!flights">No Flights Found</p>
-</div>

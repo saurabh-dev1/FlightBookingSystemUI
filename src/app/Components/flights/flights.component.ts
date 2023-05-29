@@ -27,11 +27,13 @@ export class FlightsComponent implements OnInit{
      })
 
   }
-  navigateToAddFlight() {
+  AddFlight() {
     this.router.navigateByUrl('addFlight');
   }
-  editFlight() {
-    this.router.navigateByUrl('Edit/:id');
+  editFlight(FlightId: number) {
+    this.router.navigateByUrl('Edit/'+ FlightId);
   }
+
+
 
     }
