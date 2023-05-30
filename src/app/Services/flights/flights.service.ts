@@ -30,4 +30,8 @@ export class FlightsService {
   deleteFlight(flightId : number): Observable<FlightModule>{
     return this.httpClient.delete<FlightModule>(this.baseApiUrl + '/Flight/' + flightId);
   }
+
+  searchFlight(departureCity: any, arrivalCity: any, departureDateTime: any): Observable<FlightModule>{
+    return this.httpClient.get<FlightModule>(this.baseApiUrl+`/Flight/GetByCities/`+departureCity +'/'+ arrivalCity +'/'+departureDateTime);
+  }
 }

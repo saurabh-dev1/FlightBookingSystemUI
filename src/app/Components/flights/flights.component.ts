@@ -27,6 +27,9 @@ export class FlightsComponent implements OnInit{
      })
 
   }
+
+
+
   AddFlight() {
     this.router.navigateByUrl('addFlight');
   }

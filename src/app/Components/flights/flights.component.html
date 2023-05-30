@@ -18,15 +18,15 @@
 
                   </li>
                   <li>
-                      <a data-bs-toggle="collapse" class="nav-link px-0 align-middle" routerLink="flights">
-                          <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline" >Flights</span> </a>
+                    <button data-bs-toggle="collapse" class="nav-link px-0 align-middle" routerLink="flights">
+                        <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline" >Flights</span> </button>
 
-                  </li>
+                </li>
 
                   <li>
-                      <a href="#" class="nav-link px-0 align-middle">
-                          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Users</span> </a>
-                  </li>
+                    <button class="nav-link px-0 align-middle " routerLink="users">
+                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Users</span> </button>
+                </li>
               </ul>
               <hr>
               <div class="dropdown pb-4">
@@ -57,7 +57,8 @@
                 <th scope="col">Number</th>
                 <th scope="col">Departure City</th>
                 <th scope="col">Destination</th>
-                <th scope="col">Time</th>
+                <th scope="col">Departure Date</th>
+                <th scope="col">Departure Time</th>
                 <th scope="col">Price</th>
                 <th> </th>
               </tr>
@@ -69,7 +70,8 @@
                 <td>{{flight.flightNumber}}</td>
                 <td>{{flight.departureCity}}</td>
                 <td>{{flight.arrivalCity}}</td>
-                <td>{{flight.departureDateTime}}</td>
+                <td>{{flight.departureDateTime | date:'dd-MM-yyyy' }}</td>
+                <td>{{flight.departureDateTime | date:'HH:mm' }}</td>
                 <td>{{flight.basePrice}}</td>
                 <td><button class="btn btn-primary" type = "submit" (click)="editFlight(flight.flightId)">View</button>
                     </td>
@@ -87,6 +89,5 @@
   </div>
 </div>
 </header>
-
 
 

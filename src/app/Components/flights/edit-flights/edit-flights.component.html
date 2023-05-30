@@ -25,9 +25,9 @@
                   </li>
 
                   <li>
-                      <a href="#" class="nav-link px-0 align-middle">
-                          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Users</span> </a>
-                  </li>
+                    <button class="nav-link px-0 align-middle " routerLink="users">
+                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Users</span> </button>
+                </li>
               </ul>
               <hr>
               <div class="dropdown pb-4">
@@ -75,7 +75,7 @@
             </div>
             <div class="mb-3">
               <label for="time" class="form-label">Time</label>
-              <input type="date" class="form-control" id="time" name="departureDateTime" [(ngModel)]="flightDetail.departureDateTime">
+              <input type="dateTime" class="form-control" id="time" name="departureDateTime" [(ngModel)]="flightDetail.departureDateTime">
             </div>
             <div class="mb-3">
               <label for="price" class="form-label">Price</label>

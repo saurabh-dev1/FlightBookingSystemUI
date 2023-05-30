@@ -18,15 +18,15 @@
 
                   </li>
                   <li>
-                      <button data-bs-toggle="collapse" class="nav-link px-0 align-middle" routerLink="flights">
-                          <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline" >Flights</span> </button>
+                    <button data-bs-toggle="collapse" class="nav-link px-0 align-middle" routerLink="flights">
+                        <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline" >Flights</span> </button>
 
-                  </li>
+                </li>
 
                   <li>
-                      <button class="nav-link px-0 align-middle " routerLink="users">
-                          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Users</span> </button>
-                  </li>
+                    <button class="nav-link px-0 align-middle " routerLink="users">
+                      <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Users</span> </button>
+             </li>
               </ul>
               <hr>
               <div class="dropdown pb-4">
@@ -48,7 +48,39 @@
       </div>
       <div class="col py-3">
 
+          <div class="container my-5">
+
+            <table class="table table-striped" *ngIf="users" >
+              <thead>
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Name</th>
+
+                  <th scope="col">Email Id</th>
+
+                  <th scope="col">Password</th>
+                  <th scope="col">Phone No</th>
+                  <th scope="col">Roles</th>
+                  <th> </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of users">
+                  <th scope="row">{{user.userId}}</th>
+                  <td>{{user.userName}}</td>
+                  <td>{{user.emailAddress}}</td>
+                  <td>{{user.password}}</td>
+                  <td>{{user.phoneNo}}</td>
+                  <td>{{user.roles}}</td>
+
+
+
+                   </tr>
+
+
+              </tbody>
+            </table>
       </div>
   </div>
 </div>
-</header>
+

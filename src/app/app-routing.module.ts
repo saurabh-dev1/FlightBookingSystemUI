@@ -8,6 +8,8 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { FlightsComponent } from './Components/flights/flights.component';
 import { AddFlightsComponent } from './Components/flights/add-flights/add-flights.component';
 import { EditFlightsComponent } from './Components/flights/edit-flights/edit-flights.component';
+import { FlightSearchedComponent } from './Components/flight-searched/flight-searched.component';
+import { UsersComponent } from './Components/User/users/users.component';
 
 
 
@@ -26,8 +28,12 @@ const routes: Routes = [
     },
   {
     path:'flights', component: FlightsComponent
-  }
+  },
+  {
+    path:'users', component: UsersComponent
+    }
  ]},
+
 
 
 
@@ -62,6 +68,10 @@ const routes: Routes = [
     path: 'Admin/flights/Admin',
     component: AdminNavbarComponent
   },
+  {
+    path: 'flightSearched',
+    component: FlightSearchedComponent
+  }
 ];
 
 @NgModule({

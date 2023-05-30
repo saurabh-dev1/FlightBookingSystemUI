@@ -16,6 +16,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgToastModule } from 'ng-angular-popup';
 import { AddFlightsComponent } from './Components/flights/add-flights/add-flights.component';
 import { EditFlightsComponent } from './Components/flights/edit-flights/edit-flights.component';
+import { FlightSearchedComponent } from './Components/flight-searched/flight-searched.component';
+import { UsersComponent } from './Components/User/users/users.component';
 
 
 
@@ -32,6 +34,8 @@ import { EditFlightsComponent } from './Components/flights/edit-flights/edit-fli
     DashboardComponent,
     AddFlightsComponent,
     EditFlightsComponent,
+    FlightSearchedComponent,
+    UsersComponent,
 
 
 
