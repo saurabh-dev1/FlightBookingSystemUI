@@ -69,8 +69,12 @@
               <input type="text" class="form-control" id="arr_city" name="arrivalCity" [(ngModel)]="addFlightRequest.arrivalCity" >
             </div>
             <div class="mb-3">
-              <label for="time" class="form-label">Time</label>
+              <label for="time" class="form-label">Departure Time</label>
               <input type="datetime-local" class="form-control" id="time" name="departureDateTime" [(ngModel)]="addFlightRequest.departureDateTime">
+            </div>
+            <div class="mb-3">
+              <label for="time" class="form-label">Arrival Time</label>
+              <input type="datetime-local" class="form-control" id="time" name="arrivalDateTime" [(ngModel)]="addFlightRequest.arrivalDateTime">
             </div>
             <div class="mb-3">
               <label for="price" class="form-label">Price</label>

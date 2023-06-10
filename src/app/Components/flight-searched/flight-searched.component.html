@@ -1,1 +1,66 @@
-<p>flight-searched works!</p>
+
+
+
+<nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">My Ways</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" >Account</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" >Bookings</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container">
+  <h2>Flight Search Results</h2>
+
+  <div *ngIf=" flights.length > 0">
+    <div class="card mb-3" *ngFor="let flight of flights">
+      <div class="card-body">
+        <div class="flight-info">
+          <div>
+            <h5 class="flight-name">Flight: {{ flight.flightName }}</h5>
+            <p class="departure-arrival">
+              <span class="departure">Departure: {{ flight.departureCity }}</span>
+              <span class="dotted-line"></span>
+              <span class="arrival">Arrival: {{ flight.arrivalCity }}</span>
+              <span class="dotted-line"></span>
+              <span class="departTime">departure Time: {{flight.departureDateTime | date:'HH:mm' }}</span>
+              <span class="dotted-line"></span>
+              <span class="arrivalTime">Arrival time: {{flight.arrivalDateTime | date:'HH:mm' }}</span>
+            </p>
+            <p class="departure-date">Departure Date: {{ flight.departureDateTime | date: 'yyyy-MM-dd' }}</p>
+          </div>
+          <div class="booking">
+            <p class="price">Price: {{ flight.basePrice }}</p>
+            <button class="btn btn-primary" type = "submit" (click)="booking()">Book Flight</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="flights.length === 0" class="no-flights">
+    <p>No flights found.</p>
+  </div>
+</div>
+

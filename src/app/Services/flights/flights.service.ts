@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { FlightModule } from 'src/app/models/flight/flight.module';
 
 @Injectable({
@@ -34,4 +34,9 @@ export class FlightsService {
   searchFlight(departureCity: any, arrivalCity: any, departureDateTime: any): Observable<FlightModule>{
     return this.httpClient.get<FlightModule>(this.baseApiUrl+`/Flight/GetByCities/`+departureCity +'/'+ arrivalCity +'/'+departureDateTime);
   }
+
+  searchedFlight(departureCity: any, arrivalCity: any, departureDateTime: any): Observable<FlightModule[]>{
+    return this.httpClient.get<FlightModule[]>(this.baseApiUrl+`/Flight/GetByCities/`+departureCity +'/'+ arrivalCity +'/'+departureDateTime);
+  }
+
 }

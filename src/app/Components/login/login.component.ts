@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { AuthService } from 'src/app/Services/auth.service';
+import { UserModule } from 'src/app/models/user/user/user.module';
 
 
 
@@ -14,7 +15,11 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class LoginComponent implements OnInit {
   loginform!: FormGroup;
 
+
   constructor(private fb: FormBuilder, private auth: AuthService, private router :Router, private toast:NgToastService){}
+
+
+
 
   result: any;
   ngOnInit(): void {
@@ -70,6 +75,7 @@ export class LoginComponent implements OnInit {
           }
         },
         error: (err) =>{
+
           this.toast.success({detail:"ERROR", summary:"Something went wrong!", duration: 5000})
           console.log(err);
         },

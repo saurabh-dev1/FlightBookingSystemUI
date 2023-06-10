@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import DataService from 'src/app/Services/Data/data.service';
 import { FlightsService } from 'src/app/Services/flights/flights.service';
 import { FlightModule } from 'src/app/models/flight/flight.module';
 
@@ -12,7 +13,7 @@ import { FlightModule } from 'src/app/models/flight/flight.module';
 export class HomePageComponent implements OnInit {
 
 
-  constructor(private route : ActivatedRoute, private flightService: FlightsService, private router: Router,private builder:FormBuilder) {}
+  constructor( private flightService: FlightsService, private router: Router,private builder:FormBuilder, private DataService: DataService) {}
 
   flightDetail: FlightModule ={
     flightId: 0,
@@ -42,27 +43,24 @@ export class HomePageComponent implements OnInit {
   });
 
   searchFlights(){
-    // debugger
-    // this.flightService.searchFlight(this.flightDetail.departureCity, this.flightDetail.arrivalCity, this.flightDetail.departureDateTime)
-    // .subscribe({
-    //   next: (response) =>{
-    //     this.router.navigate(['flightSearched']);
-    //   }
-    // });
 
         if(this.searchflightsform.valid){
           //call Api
           this.flightService.searchFlight(this.searchflightsform.value.departureCity, this.searchflightsform.value.arrivalCity, this.searchflightsform.value.departureDateTime)
-          .subscribe({
-            next:(res) => {
-              console.log(res);
+          .subscribe(
+
+            (res) => {
+
+              //console.log(res);
               this.flightDetail = res;
+
+              this.DataService.setData(res);
               this.router.navigate(['flightSearched']);
             },
-            error:(err) => {
+            (err) => {
               console.log(err);
             }
-            })
+            )
 
         }
       }

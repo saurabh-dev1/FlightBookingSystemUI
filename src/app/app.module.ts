@@ -18,6 +18,7 @@ import { AddFlightsComponent } from './Components/flights/add-flights/add-flight
 import { EditFlightsComponent } from './Components/flights/edit-flights/edit-flights.component';
 import { FlightSearchedComponent } from './Components/flight-searched/flight-searched.component';
 import { UsersComponent } from './Components/User/users/users.component';
+import { BookingComponent } from './Components/booking/booking.component';
 
 
 
@@ -36,6 +37,7 @@ import { UsersComponent } from './Components/User/users/users.component';
     EditFlightsComponent,
     FlightSearchedComponent,
     UsersComponent,
+    BookingComponent,
 
 
 

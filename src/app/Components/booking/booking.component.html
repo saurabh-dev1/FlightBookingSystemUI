@@ -1,0 +1,31 @@
+<body>
+  <div class="container">
+    <h1>Flight Booking</h1>
+    <form>
+      <div class="form-group">
+        <label for="passenger-name">Passenger Name</label>
+        <input type="text" class="form-control" id="passenger-name" placeholder="Enter passenger name">
+      </div>
+      <div class="form-group">
+        <label for="flight-number">Flight Number</label>
+        <input type="text" class="form-control" id="flight-number" placeholder="Enter flight number">
+      </div>
+      <div class="form-group">
+        <label for="departure-date">Departure Date</label>
+        <input type="date" class="form-control" id="departure-date">
+      </div>
+      <div class="form-group">
+        <label for="seat-class">Seat Class</label>
+        <select class="form-control" id="seat-class">
+          <option>Economy</option>
+          <option>Business</option>
+          <option>First Class</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="passenger-count">Passenger Count</label>
+        <input type="number" class="form-control" id="passenger-count" min="1" max="10">
+      </div>
+      <button type="submit" class="btn btn-primary btn-book">Book Flight</button>
+    </form>
+  </div>

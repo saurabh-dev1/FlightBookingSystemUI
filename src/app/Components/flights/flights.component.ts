@@ -36,7 +36,9 @@ export class FlightsComponent implements OnInit{
   editFlight(FlightId: number) {
     this.router.navigateByUrl('Edit/'+ FlightId);
   }
-
+  getUser(){
+    this.router.navigateByUrl('users')
+  }
 
 
     }
