@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FlightsComponent } from './Components/flights/flights.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { ToastrModule } from 'ngx-toastr';
+import { MaterialModule } from 'src/material/material.module';
 import { NgToastModule } from 'ng-angular-popup';
 import { AddFlightsComponent } from './Components/flights/add-flights/add-flights.component';
 import { EditFlightsComponent } from './Components/flights/edit-flights/edit-flights.component';
@@ -50,8 +51,10 @@ import { BookingComponent } from './Components/booking/booking.component';
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot(),
+    MaterialModule,
     NgToastModule,
     FormsModule,
+
 
   ],
   providers: [],

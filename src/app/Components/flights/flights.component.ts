@@ -1,6 +1,8 @@
 
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BookingService } from 'src/app/Services/booking/booking.service';
 import { FlightsService } from 'src/app/Services/flights/flights.service';
 import { FlightModule } from 'src/app/models/flight/flight.module';
 
@@ -11,7 +13,7 @@ import { FlightModule } from 'src/app/models/flight/flight.module';
 })
 export class FlightsComponent implements OnInit{
 
-  constructor (private flightService: FlightsService, private router: Router){}
+  constructor (private flightService: FlightsService,private builder: FormBuilder, private router: Router, private bookingService: BookingService){}
 
   flights: FlightModule[] = [];
   ngOnInit(): void {
@@ -27,6 +29,10 @@ export class FlightsComponent implements OnInit{
      })
 
   }
+
+
+
+
 
 
 

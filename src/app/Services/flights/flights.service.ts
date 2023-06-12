@@ -39,4 +39,15 @@ export class FlightsService {
     return this.httpClient.get<FlightModule[]>(this.baseApiUrl+`/Flight/GetByCities/`+departureCity +'/'+ arrivalCity +'/'+departureDateTime);
   }
 
+   private selectedflight:BehaviorSubject<any> = new BehaviorSubject<any>(null)
+
+  getSearchedflight():Observable<FlightModule>
+  {
+   return this.selectedflight.asObservable();
+  }
+  setSearchedFlight(obj:FlightModule)
+  {
+    this.selectedflight.next(obj);
+  }
+
 }

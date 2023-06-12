@@ -5,4 +5,6 @@ export interface PassengerModule{
   age: number;
   gender: string;
   phoneNumber: string;
+  userId: number;
+  bookingId: number
 }

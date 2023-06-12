@@ -64,6 +64,8 @@ export class LoginComponent implements OnInit {
           console.log(res);
           this.auth.storeToken(res.token);
 
+          sessionStorage.setItem('userId', res.userId);
+
           this.toast.success({detail:"SUCCESS", duration: 5000});
 
           if(this.result.message == "Admin")

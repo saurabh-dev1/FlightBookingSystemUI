@@ -39,7 +39,7 @@ export class AddFlightsComponent implements OnInit {
 
       next: (flight) => {
 
-        //console.log(flight);
+        console.log(flight);
         this.router.navigate(['Admin/flights']);
       }
     })
