@@ -4,7 +4,6 @@ export interface BookingModule{
   arrivalCity: string;
   departureDateTime: Date;
   arrivalDateTime: Date;
-  noOfPassenger: number;
   flightId: number;
   userId: number;
 }

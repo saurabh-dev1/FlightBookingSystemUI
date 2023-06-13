@@ -60,7 +60,6 @@ convertToNumberfromstring(value: string | null): number | null
       arrivalCity: this.builder.control('',Validators.required),
       departureDateTime: this.builder.control(flight.departureDateTime,Validators.required),
       arrivalDateTime: this.builder.control(flight.arrivalDateTime,Validators.required),
-    noOfPassenger: this.builder.control(0,Validators.required),
     flightId: this.builder.control(0, Validators.required),
     userId: this.builder.control(0, Validators.required),
   })
@@ -72,7 +71,6 @@ convertToNumberfromstring(value: string | null): number | null
     this.AddBookingForm.value.departureDateTime= flight.departureDateTime;
     this.AddBookingForm.value.arrivalDateTime = flight.arrivalDateTime;
     this.AddBookingForm.value.flightId= flight.flightId;
-    this.AddBookingForm.value.noOfPassenger= 4;
     this.AddBookingForm.value.userId= userId;
 
 
