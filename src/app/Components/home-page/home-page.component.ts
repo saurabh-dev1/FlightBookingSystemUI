@@ -78,25 +78,5 @@ export class HomePageComponent implements OnInit {
       flightId: this.builder.control(0, Validators.required),
       userId: this.builder.control(0, Validators.required),
     })
-      onFlightSelected(id:number)
-      {
 
-           this.flightService.getFlight(id).subscribe((res) => {
-
-            this.flightService.setSearchedFlight(res);
-           })
-           debugger
-           this.bookingService.addBooking(this.AddBookingForm.value).subscribe((res: any) => {
-             console.log(res)
-            debugger
-            // console.log(res.data.id);
-            // debugger
-            sessionStorage.setItem("bookingId",res.bookingId)
-
-           })
-
-
-
-          // this.route.navigate(['home/flights']);
-        }
     }

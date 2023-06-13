@@ -67,9 +67,9 @@ export class BookingComponent {
   CancelBooking()
   {
     let bookingId : number | null = this.convertToNumberfromstring(sessionStorage.getItem('bookingId'))
-debugger
+
     if(bookingId !== null){
-      debugger
+
       this.bookingService.cancelBooking(bookingId).subscribe((res) => {
         console.log(res);
         this.toast.success({detail:"Booking Canceled", duration: 5000});
@@ -84,10 +84,13 @@ debugger
   //add passenger
   AddPassenger()
   {
-
-    this.AddPassengerForm.value.bookingId = this.convertToNumberfromstring(sessionStorage.getItem('bookingId'))
-    this.AddPassengerForm.value.userId = this.convertToNumberfromstring(sessionStorage.getItem('userId'))
+    debugger
+    let bId = this.convertToNumberfromstring(sessionStorage.getItem('bookingId'))
+    let uId = this.convertToNumberfromstring(sessionStorage.getItem('userId'))
+    if(bId!==null && uId!==null){
+    debugger
    if(this.AddPassengerForm.valid){
+    debugger
     const passenger: PassengerModule = {
       passengerId: 0,
       firstName: this.AddPassengerForm.value.firstName ?? '',
@@ -95,13 +98,13 @@ debugger
         age: this.AddPassengerForm.value.age ? parseInt(this.AddPassengerForm.value.age) : 0,
         gender: this.AddPassengerForm.value.gender ?? '',
         phoneNumber: this.AddPassengerForm.value.phoneNumber ?? '',
-        userId: 0,
-        bookingId:0
+        userId: uId,
+        flightBookingId:bId
 
     };
 
     this.passengerService.addPassenger(passenger).subscribe((res: any) => {
-      this.passengers = res;
+      this.passengers.push (res);
       console.log(res);
       console.log(this.passengers)
     })
@@ -109,7 +112,7 @@ debugger
 
     this.toast.error({detail:"All blanks required!", duration: 5000});
   }
-
+    }
   }
 
 
@@ -117,6 +120,7 @@ debugger
 
    cancelPassenger(passengerId:number)
    {
+    debugger
      console.log("passenger Id :"+passengerId);
 
      this.passengerService.deletePassenger(passengerId).subscribe((res:any) => {

@@ -44,13 +44,17 @@ export class DashboardComponent {
 
   searchFlights(){
 
+debugger
         if(this.searchflightsform.valid){
+          debugger
           //call Api
           this.flightService.searchFlight(this.searchflightsform.value.departureCity, this.searchflightsform.value.arrivalCity, this.searchflightsform.value.departureDateTime)
           .subscribe(
 
+
             (res) => {
 
+              debugger
               //console.log(res);
               this.flightDetail = res;
 
@@ -75,26 +79,6 @@ export class DashboardComponent {
       flightId: this.builder.control(0, Validators.required),
       userId: this.builder.control(0, Validators.required),
     })
-      onFlightSelected(id:number)
-      {
 
-           this.flightService.getFlight(id).subscribe((res) => {
-
-            this.flightService.setSearchedFlight(res);
-           })
-           debugger
-           this.bookingService.addBooking(this.AddBookingForm.value).subscribe((res: any) => {
-             console.log(res)
-            debugger
-            // console.log(res.data.id);
-            // debugger
-            sessionStorage.setItem("bookingId",res.bookingId)
-
-           })
-
-
-
-          // this.route.navigate(['home/flights']);
-        }
     }
 

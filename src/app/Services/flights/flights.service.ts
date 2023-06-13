@@ -32,6 +32,7 @@ export class FlightsService {
   }
 
   searchFlight(departureCity: any, arrivalCity: any, departureDateTime: any): Observable<FlightModule>{
+    debugger
     return this.httpClient.get<FlightModule>(this.baseApiUrl+`/Flight/GetByCities/`+departureCity +'/'+ arrivalCity +'/'+departureDateTime);
   }
 

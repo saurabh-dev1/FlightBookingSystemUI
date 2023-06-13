@@ -6,5 +6,5 @@ export interface PassengerModule{
   gender: string;
   phoneNumber: string;
   userId: number;
-  bookingId: number
+  flightBookingId: number
 }

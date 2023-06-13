@@ -11,8 +11,9 @@ export class BookingService {
   private baseApiUrl = "http://localhost:5238/api"
   constructor(private httpClient: HttpClient) { }
 
-  addBooking(addBookingRequest : any): Observable<any>{
-    return this.httpClient.post<any>(this.baseApiUrl + '/FlightBooking', addBookingRequest);
+  addBooking(addBookingRequest : BookingModule): Observable<any>{
+    debugger
+    return this.httpClient.post<BookingModule>(this.baseApiUrl + '/FlightBooking/Add', addBookingRequest);
   }
 
   cancelBooking(bookingId : number): Observable<BookingModule>{

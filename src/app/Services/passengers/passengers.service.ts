@@ -19,6 +19,6 @@ export class PassengersService {
   }
 
   deletePassenger(passengerId : number): Observable<PassengerModule>{
-    return this.httpClient.delete<PassengerModule>(this.baseApiUrl + '/Flight/' + passengerId);
+    return this.httpClient.delete<PassengerModule>(this.baseApiUrl + '/Passenger/' + passengerId);
   }
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FlightsService } from 'src/app/Services/flights/flights.service';
 import { FlightModule } from 'src/app/models/flight/flight.module';
 import { HomePageComponent } from '../home-page/home-page.component';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import DataService from 'src/app/Services/Data/data.service';
 import { Route, Router } from '@angular/router';
 import { BookingService } from 'src/app/Services/booking/booking.service';
@@ -17,31 +17,24 @@ export class FlightSearchedComponent {
   flights: FlightModule[] = [] ;
   formData: any;
   flight!: FlightModule;
+  AddBookingForm!: FormGroup
 
   constructor( private builder: FormBuilder,private flightService : FlightsService, private dataService : DataService, private router: Router, private bookingService: BookingService){
 
     this.dataService.Data$.subscribe
     ((res) => {this.flights  = res
     console.log(this.flights);
+  });
 
     this.flightService.getSearchedflight().subscribe
     ((res) => {this.flight = res
     console.log(this.flight)}
     )
-  });
+
   }
 
 
-  AddBookingForm = this.builder.group({
-    flightbookingId: this.builder.control(0, Validators.required),
-    departureCity: this.builder.control('', Validators.required),
-    arrivalCity: this.builder.control('',Validators.required),
-    departureDate: this.builder.control(new Date(),Validators.required),
-    arrivalDate: this.builder.control(new Date(),Validators.required),
-  noOfPassenger: this.builder.control(0,Validators.required),
-  flightId: this.builder.control(0, Validators.required),
-  userId: this.builder.control(0, Validators.required),
-})
+
 
 convertToNumberfromstring(value: string | null): number | null
   {
@@ -61,27 +54,39 @@ convertToNumberfromstring(value: string | null): number | null
 
   booking(flight : FlightModule){
 
-    debugger
+    this.AddBookingForm = this.builder.group({
+      flightbookingId: this.builder.control(0, Validators.required),
+      departureCity: this.builder.control('', Validators.required),
+      arrivalCity: this.builder.control('',Validators.required),
+      departureDateTime: this.builder.control(flight.departureDateTime,Validators.required),
+      arrivalDateTime: this.builder.control(flight.arrivalDateTime,Validators.required),
+    noOfPassenger: this.builder.control(0,Validators.required),
+    flightId: this.builder.control(0, Validators.required),
+    userId: this.builder.control(0, Validators.required),
+  })
+
     let userId : number | null = this.convertToNumberfromstring(sessionStorage.getItem('userId'))
-debugger
+
     this.AddBookingForm.value.departureCity=flight.departureCity;
     this.AddBookingForm.value.arrivalCity = flight.arrivalCity;
-    this.AddBookingForm.value.departureDate = flight.departureDateTime;
-    this.AddBookingForm.value.arrivalDate = flight.arrivalDateTime;
+    this.AddBookingForm.value.departureDateTime= flight.departureDateTime;
+    this.AddBookingForm.value.arrivalDateTime = flight.arrivalDateTime;
     this.AddBookingForm.value.flightId= flight.flightId;
     this.AddBookingForm.value.noOfPassenger= 4;
     this.AddBookingForm.value.userId= userId;
 
 
-    debugger
     this.bookingService.addBooking(this.AddBookingForm.value).subscribe((res: any) => {
+     // console.log(this.AddBookingForm.value.departureDate + "departure date hai  3")
+     // res.departureDate = this.AddBookingForm.value.departureDate
+
       console.log(res)
 
 
      // console.log(res.data.id);
      // debugger
      sessionStorage.setItem("bookingId",res.flightBookingId)
-     debugger
+
     })
     this.router.navigateByUrl('booking')
   }
