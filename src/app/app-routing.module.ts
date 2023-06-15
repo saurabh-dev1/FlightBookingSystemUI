@@ -11,6 +11,7 @@ import { EditFlightsComponent } from './Components/flights/edit-flights/edit-fli
 import { FlightSearchedComponent } from './Components/flight-searched/flight-searched.component';
 import { UsersComponent } from './Components/User/users/users.component';
 import { BookingComponent } from './Components/booking/booking.component';
+import { BookingListComponent } from './Components/booking/bookingList/booking-list/booking-list.component';
 
 
 
@@ -34,7 +35,9 @@ const routes: Routes = [
     path:'users', component: UsersComponent
     }
  ]},
-
+ {
+  path:'users', component: UsersComponent
+  },
 
 
 
@@ -61,6 +64,7 @@ const routes: Routes = [
     path: 'Login/SignUp',
     component: SignUpComponent
   },
+
   {
     path: 'dashboard',
     component: DashboardComponent
@@ -76,6 +80,10 @@ const routes: Routes = [
   {
     path: 'booking',
     component: BookingComponent
+  },
+  {
+    path: 'bookingList',
+    component: BookingListComponent
   }
 ];
 

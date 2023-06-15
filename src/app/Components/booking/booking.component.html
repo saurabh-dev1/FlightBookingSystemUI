@@ -1,13 +1,14 @@
 <div class="passenger-list" *ngIf="passengers.length > 0">
-  <div class="passenger-card" *ngFor="let item of passengers">
+  <div class="passenger-card" *ngFor="let item of passengers; let i = index">
     <a class="close-icon" (click)="cancelPassenger(item.passengerId)">
       <mat-icon>close</mat-icon>
     </a>
     <div class="card-content">
-      <h1>{{item.firstName}} {{item.lastName}}</h1>
-      <p>{{item.phoneNumber}}</p>
-      <p>{{item.gender}}</p>
-      <p>{{item.age}}</p>
+      <h1>Passenger {{i + 1}}</h1>
+      <p>Name: {{item.firstName}} {{item.lastName}}<p>
+      <p>Gender: {{item.gender}}</p>
+      <p>Age: {{item.age}}</p>
+      <p>Phone No:{{item.phoneNumber}}</p>
     </div>
   </div>
 </div>

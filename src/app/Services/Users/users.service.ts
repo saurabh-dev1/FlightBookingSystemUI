@@ -16,4 +16,7 @@ export class UsersService {
     return this.httpClient.get<UserModule[]>(this.baseApiUrl + '/User');
   }
 
+  getUserById(userId: number): Observable<UserModule[]>{
+    return this.httpClient.get<UserModule[]>(this.baseApiUrl + '/User/' +userId);
+  }
 }

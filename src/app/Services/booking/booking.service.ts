@@ -20,4 +20,7 @@ export class BookingService {
     return this.httpClient.delete<BookingModule>(this.baseApiUrl + '/FlightBooking/'+ bookingId);
   }
 
+  getBookings() : Observable<BookingModule[]>{
+    return this.httpClient.get<BookingModule[]>(this.baseApiUrl + '/FlightBooking');
+  }
 }

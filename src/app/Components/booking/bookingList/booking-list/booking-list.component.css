@@ -1,0 +1,71 @@
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  font-size: 14px;
+}
+
+
+
+th, td {
+  vertical-align: middle;
+}
+
+.link-text {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}
+
+.selected-flight-details {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+.selected-flight-card {
+  width: 400px;
+  margin-top: 20px;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.selected-flight-card mat-card-header {
+  background-color: #007bff;
+  color: #ffffff;
+}
+.container {
+  display: flex;
+}
+
+.flight-details {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.user-details {
+  flex-grow: 1;
+  margin-left: 10px;
+}
+
+.selected-flight-card mat-card-content {
+  padding: 16px;
+}
+
+.no-flights-msg {
+  margin-top: 20px;
+  font-style: italic;
+  text-align: center;
+}
+
+.table-hover tbody tr:hover {
+  box-shadow:0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.fixed-me-dropdown {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}

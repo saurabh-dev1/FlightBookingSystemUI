@@ -66,6 +66,7 @@ export class BookingComponent {
 
   CancelBooking()
   {
+    debugger
     let bookingId : number | null = this.convertToNumberfromstring(sessionStorage.getItem('bookingId'))
 
     if(bookingId !== null){
@@ -123,13 +124,15 @@ export class BookingComponent {
     debugger
      console.log("passenger Id :"+passengerId);
 
-     this.passengerService.deletePassenger(passengerId).subscribe((res:any) => {
+     this.passengerService.deletePassenger(passengerId).subscribe((res:PassengerModule) => {
 
        console.log(res)
        if(res)
        {
 
-        this.passengers = res
+        this.passengers = this.passengers.filter(
+          (passenger) => passenger.passengerId !== passengerId
+        );
          this.toast.success({detail:"Passenger Deleted", duration: 5000})}
        else{
          this.toast.warning({detail:"Error", duration: 5000});
