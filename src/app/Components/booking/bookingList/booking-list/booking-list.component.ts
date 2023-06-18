@@ -30,22 +30,22 @@ export class BookingListComponent implements OnInit{
     availableSeats: 0
 }
 
-users: UserModule = {
-  userId: 0,
-  userName: "",
-  emailAddress: "",
-  password: "",
-  phoneNo: "",
-  roles: ""
-}
-
+// users: UserModule = {
+//   userId: 0,
+//   userName: "",
+//   emailAddress: "",
+//   password: "",
+//   phoneNo: "",
+//   roles: ""
+// }
+ users: any;
 
 
   constructor ( private bookingService: BookingService, private flightService: FlightsService, private userService: UsersService){}
 
 
   bookings: BookingModule[] = [];
-  tusers: UserModule[]=[];
+  // tusers: UserModule[]=[];
 
   ngOnInit(): void {
 
@@ -86,7 +86,7 @@ users: UserModule = {
     this.userService.getUserById(userId)
           .subscribe( (res) => {
             this.selectedUserId = userId;
-            this.tusers = res;
+            this.users = res;
             console.log(res);
           },
           (error) => {

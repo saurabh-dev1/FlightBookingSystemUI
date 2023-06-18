@@ -201,3 +201,12 @@ h2 {
 
 
 
+
+#booking {
+	font-family: 'Lato', sans-serif;
+	background-image: url('/assets/background.jpg');
+	background-size: cover;
+	background-position: center;
+	color: #191a1e;
+  height: 92.5vh;
+}

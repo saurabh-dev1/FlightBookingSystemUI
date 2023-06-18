@@ -25,4 +25,21 @@ export class UsersComponent implements OnInit{
     })
   }
 
+  deleteUser(userId : number){
+
+    if(userId !== null){
+      debugger
+      this.userService.deleteUser(userId).subscribe(
+        () => {
+          this.users = this.users.filter(user => user.userId !== userId);
+        },
+        (error) => {
+          console.error('Error deleting booking:', error);
+        }
+      );
+
+    }else{
+
+    }
+  }
 }

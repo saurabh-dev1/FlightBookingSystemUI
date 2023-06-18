@@ -19,7 +19,7 @@
       <h2>Passenger</h2>
       <a class="close-icon" (click)="CancelBooking()"><mat-icon>close</mat-icon></a>
     </div>
-    <form class="example-form" [formGroup]="AddPassengerForm" (ngSubmit)="AddPassenger()">
+    <form class="example-form" [formGroup]="AddPassengerForm" >
       <div class="input-group">
         <mat-form-field class="input-field">
           <mat-label>First Name</mat-label>
@@ -47,14 +47,24 @@
         </mat-form-field>
       </div>
       <div class="submit-container">
-        <button mat-raised-button color="primary" class="passenger-submit">
+        <button mat-raised-button color="primary" class="passenger-submit" (click)="AddPassenger()">
           <mat-icon>person</mat-icon>
           <mat-hint>Add Passenger</mat-hint>
         </button>
       </div>
     </form>
+    <div class="submit-container "  *ngIf="passengers.length > 0">
+    <button mat-raised-button color="primary" class="select-seat" routerLink="">
+      <mat-icon>airline_seat_recline_extra</mat-icon>
+      <mat-hint>Book</mat-hint>
+    </button>
+  </div>
+
   </mat-card>
-  <!-- <a mat-raised-button (click)="seatselection()">select Seats</a> -->
+
+</div>
+<div  class="seat-container" *ngIf="passengers.length > 0">
+  <app-seat></app-seat>
 </div>
 <!-- <div *ngIf="seatselectionOption">
     <p>toogle works</p> -->

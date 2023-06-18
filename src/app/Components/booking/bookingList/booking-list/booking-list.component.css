@@ -40,13 +40,12 @@ th, td {
 }
 
 .flight-details {
-  flex-grow: 1;
-  margin-right: 10px;
+  flex: 1;
+  margin-right: 20px;
 }
 
 .user-details {
-  flex-grow: 1;
-  margin-left: 10px;
+  flex: 1;
 }
 
 .selected-flight-card mat-card-content {
@@ -68,4 +67,32 @@ th, td {
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+#booking {
+	font-family: 'Lato', sans-serif;
+	background-image: url('/assets/background.jpg');
+	background-size: cover;
+	background-position: center;
+	color: #191a1e;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+
+@media screen and (max-width: 768px) {
+  .details-container {
+    flex-direction: column;
+  }
+
+  .flight-details,
+  .user-details {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
 }

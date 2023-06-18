@@ -1,31 +1,33 @@
-
+  <!-- side bar -->
   <div class="container-fluid">
   <div class="row flex-nowrap">
       <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
           <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-              <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+              <a routerLink="" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                   <span class="fs-5 d-none d-sm-inline">Menu</span>
               </a>
               <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                   <li class="nav-item">
                       <a routerLink="/Admin" class="nav-link align-middle px-0">
-                          <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline" >Home</span>
+                          <i class="fa fa-dashboard blue1_color fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline" >    Dashboard</span>
                       </a>
                   </li>
+
                   <li>
                       <button data-bs-toggle="collapse" class="nav-link px-0 align-middle" routerLink="/flights">
-                          <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline" >Flights</span> </button>
+                          <i class=" fa fa-fighter-jet blue1_color fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline" >   Flights</span> </button>
 
                   </li>
+
 
                   <li>
                       <button class="nav-link px-0 align-middle " routerLink="/users">
-                          <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Users</span> </button>
+                          <i class="fa fa-group blue1_color fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">    Users</span> </button>
                   </li>
 
                   <li>
                     <button class="nav-link px-0 align-middle "  routerLink="/bookingList">
-                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Bookings</span> </button>
+                        <i class=" fa fa-cloud-download blue1_color fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">   Bookings</span> </button>
                 </li>
               </ul>
               <hr>
@@ -46,7 +48,63 @@
               </div>
           </div>
       </div>
-      <div class="col py-3">
+      <div id="booking" class="col py-3">
+        <div class="midde_cont">
+          <div class="container-fluid">
+             <div class="row column_title">
+                <div class="col-md-12">
+                   <div class="page_title">
+                      <h2>Dashboard</h2>
+                   </div>
+                </div>
+             </div>
+             <div class="row column1">
+              <div class="col-md-6 col-lg-3" >
+                <mat-card routerLink="/users" class="full counter_section margin_bottom_30 card-hover" >
+                  <div class="couter_icon">
+                    <div>
+                      <i class="fa fa-group yellow_color"></i>
+                    </div>
+                  </div>
+                  <div class="counter_no">
+                    <div>
+                      <p class="total_no">{{users.length}}</p>
+                      <p class="head_couter">Users</p>
+                    </div>
+                  </div>
+                </mat-card>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <mat-card routerLink="/flights" class="full counter_section margin_bottom_30 card-hover" >
+                  <div class="couter_icon">
+                    <div>
+                      <i class="fa fa-fighter-jet blue1_color"></i>
+                    </div>
+                  </div>
+                  <div class="counter_no">
+                    <div>
+                      <p class="total_no">{{flights.length}}</p>
+                      <p class="head_couter">Flights</p>
+                    </div>
+                  </div>
+                </mat-card>
+              </div>
+              <div class="col-md-6 col-lg-3">
+                <mat-card routerLink="/bookingList" class="full counter_section margin_bottom_30 card-hover" >
+                  <div class="couter_icon">
+                    <div>
+                      <i class="fa fa-cloud-download green_color"></i>
+                    </div>
+                  </div>
+                  <div class="counter_no">
+                    <div>
+                      <p class="total_no">{{bookings.length}}</p>
+                      <p class="head_couter">Bookings</p>
+                    </div>
+                  </div>
+                </mat-card>
+              </div>
+            </div>
 
       </div>
   </div>

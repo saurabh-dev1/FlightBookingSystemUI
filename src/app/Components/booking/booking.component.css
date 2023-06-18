@@ -42,6 +42,8 @@
   align-items: center;
   gap: 20px;
   padding: 20px;
+  width: 50%; /* Adjust the width as needed */
+    float: left;
 }
 
 .title {
@@ -95,7 +97,26 @@
   transition: background-color 0.3s ease;
 }
 
+.select-seat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  background-color: #32a852;
+  color: #ffffff;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 14px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 .passenger-submit:hover {
+  background-color: #238c3f;
+}
+
+.select-seat:hover {
   background-color: #238c3f;
 }
 
@@ -105,4 +126,26 @@
 
 .mat-grid-tile.space {
   margin-right: 10px;
+}
+
+/* .passenger-form {
+
+  width: 50%;
+  float: left;
+  margin-right: 20px;
+} */
+
+.seat-container {
+  /* Styles for the seat container */
+  width: 50%; /* Adjust the width as needed */
+  float: left;
+}
+
+@media screen and (max-width: 768px) {
+  .passenger-form,
+  .seat-container {
+    width: 100%; /* Make the containers occupy full width on smaller screens */
+    float: none;
+
+  }
 }

@@ -19,4 +19,8 @@ export class UsersService {
   getUserById(userId: number): Observable<UserModule[]>{
     return this.httpClient.get<UserModule[]>(this.baseApiUrl + '/User/' +userId);
   }
+
+  deleteUser(userId:number): Observable<UserModule[]>{
+    return this.httpClient.delete<UserModule[]>(this.baseApiUrl + '/User/' +userId);
+  }
 }
