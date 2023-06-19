@@ -11,7 +11,7 @@ export class AuthService {
   constructor(private http : HttpClient) { }
 
   signUp(userObj:any):Observable<any> {
-
+    debugger
     return this.http.post(`${this.baseUrl}Register`, userObj)
 
   }
@@ -31,5 +31,9 @@ export class AuthService {
 
   isLoggedIn(): boolean{
     return !!localStorage.getItem('token')
+  }
+
+  getrole(){
+    return sessionStorage.getItem('role')!=null?sessionStorage.getItem('role')?.toString():'';
   }
 }

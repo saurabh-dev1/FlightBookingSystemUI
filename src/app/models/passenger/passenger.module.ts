@@ -5,6 +5,7 @@ export interface PassengerModule{
   age: number;
   gender: string;
   phoneNumber: string;
+  allocatedSeat : string;
   userId: number;
   flightBookingId: number
 }

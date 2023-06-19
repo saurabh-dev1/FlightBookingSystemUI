@@ -1,81 +1,187 @@
-<div class="passenger-list" *ngIf="passengers.length > 0">
-  <div class="passenger-card" *ngFor="let item of passengers; let i = index">
-    <a class="close-icon" (click)="cancelPassenger(item.passengerId)">
-      <mat-icon>close</mat-icon>
-    </a>
-    <div class="card-content">
-      <h1>Passenger {{i + 1}}</h1>
-      <p>Name: {{item.firstName}} {{item.lastName}}<p>
-      <p>Gender: {{item.gender}}</p>
-      <p>Age: {{item.age}}</p>
-      <p>Phone No:{{item.phoneNumber}}</p>
+<!-- <mat-card class="flight-card">
+  <div class="flight-header">
+    <div class="flight-details">
+      <div class="flight-name">
+        {{ searchedflight.flightName }}
+      </div>
+      <div class="airport-details">
+        {{ searchedflight.departureCity }} - {{ searchedflight.arrivalCity}}
+      </div>
+      <div class="price">{{ searchedflight.basePrice | currency : "₹" }}</div>
+    </div>
+    <div class="flightseatscount">
+      Seats:{{ searchedflight.totalSeats }}
     </div>
   </div>
-</div>
-
-<div class="passenger-form">
-  <mat-card>
-    <div class="title">
-      <h2>Passenger</h2>
-      <a class="close-icon" (click)="CancelBooking()"><mat-icon>close</mat-icon></a>
+  <div class="flight-schedule">
+    <div class="scheduleitem">
+      <div class="schedulelabel">
+        From: <strong>{{ searchedflight.departureCity }}</strong>
+      </div>
+      <div class="scheduledate">
+        {{ searchedflight.departureDateTime | date : "yyyy-MM-dd" }}
+      </div>
+      <div class="scheduletime">
+        {{ searchedflight.departureDateTime | date : "HH:mm" }}
+      </div>
     </div>
-    <form class="example-form" [formGroup]="AddPassengerForm" >
-      <div class="input-group">
-        <mat-form-field class="input-field">
-          <mat-label>First Name</mat-label>
-          <input matInput type="text" formControlName="firstName">
-        </mat-form-field>
-        <mat-form-field class="input-field">
-          <mat-label>Last Name</mat-label>
-          <input matInput type="text" formControlName="lastName">
-        </mat-form-field>
+    <div class="spacer">
+      <mat-icon class="flighticon">flight </mat-icon>
+    </div>
+    <div class="scheduleitem">
+      <div class="schedulelabel">
+        To: <strong>{{ searchedflight.arrivalCity }}</strong>
       </div>
-      <div class="input-group">
-        <mat-form-field class="input-field">
-          <mat-label>Age</mat-label>
-          <input matInput type="number" formControlName="age">
-        </mat-form-field>
-        <mat-form-field class="input-field">
-          <mat-label>Gender</mat-label>
-          <input matInput type="text" formControlName="gender">
-        </mat-form-field>
+      <div class="scheduledate">
+        {{ searchedflight.arrivalDateTime | date : "yyyy-MM-dd" }}
       </div>
-      <div class="input-group">
-        <mat-form-field class="input-field">
-          <mat-label>Phone number</mat-label>
-          <input matInput type="tel" formControlName="phoneNumber">
-        </mat-form-field>
+      <div class="scheduletime">
+        {{ searchedflight.arrivalDateTime | date : "HH:mm" }}
       </div>
-      <div class="submit-container">
-        <button mat-raised-button color="primary" class="passenger-submit" (click)="AddPassenger()">
-          <mat-icon>person</mat-icon>
-          <mat-hint>Add Passenger</mat-hint>
-        </button>
-      </div>
-    </form>
-    <div class="submit-container "  *ngIf="passengers.length > 0">
-    <button mat-raised-button color="primary" class="select-seat" routerLink="">
-      <mat-icon>airline_seat_recline_extra</mat-icon>
-      <mat-hint>Book</mat-hint>
-    </button>
+    </div>
   </div>
-
-  </mat-card>
-
-</div>
-<div  class="seat-container" *ngIf="passengers.length > 0">
-  <app-seat></app-seat>
-</div>
-<!-- <div *ngIf="seatselectionOption">
-    <p>toogle works</p> -->
-    <!-- <mat-grid-list [cols]="cols.length" style="padding-bottom: 0;" rowHeight="1:0.3">
+</mat-card> -->
+<div class="row">
+  <div class="seatscontainer">
+    <mat-grid-list
+      [cols]="cols.length"
+      class="seats"
+      style="padding-bottom: 0px"
+      rowHeight="1:0.4"
+    >
       <div *ngFor="let row of rows">
         <div *ngFor="let col of cols; let i = index">
-          <mat-grid-tile [class.space]="(i + 1) % 3 === 0">
-            <mat-checkbox [id]="row+col">{{row}}{{col}}</mat-checkbox>
+          <mat-grid-tile>
+            <mat-checkbox
+              [id]="row + col"
+              [disabled]="isSeatDisabled(row + col)"
+              (change)="onSeatSelectionChange(row + col)"
+              class="checkbox"
+              color="secondary"
+              [@enterAnimation]
+            >
+              <div class="checkboxlabel">{{ row }}{{ col }}</div>
+            </mat-checkbox>
           </mat-grid-tile>
         </div>
       </div>
-    </mat-grid-list> -->
+    </mat-grid-list>
+  </div>
+</div>
+<div class="row">
+  <div class="selected-seats">
+    <h2>Selected Seats</h2>
+    <div *ngFor="let seat of selectedSeats">
+      <div class="seatitem">
+        <div class="seatname">{{ seat }}</div>
+        <div class="seatbutton">
+          <button (click)="addPassengerOption(seat)" mat-raised-button>
+            Add Passenger
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="passenger-form" *ngIf="passengerAddOption">
+    <mat-card>
+      <div class="title">
+        <h1>Passenger for seat: {{ currentseat }}</h1>
+        <a class="close-icon" (click)="CancelBooking()"><mat-icon>close</mat-icon></a>
+      </div>
+      <form
+        class="example-form"
+        [formGroup]="AddPassengerForm"
+        (ngSubmit)="AddPassenger()"
+      >
+        <div class="input-group">
+          <mat-form-field class="input-field">
+            <mat-label>First Name</mat-label>
+            <input matInput type="text" formControlName="firstName" />
+          </mat-form-field>
+          <mat-form-field class="input-field">
+            <mat-label>Last Name</mat-label>
+            <input matInput type="text" formControlName="lastName" />
+          </mat-form-field>
+        </div>
+        <div class="input-group">
+          <mat-form-field class="input-field">
+            <mat-label>Age</mat-label>
+            <input matInput type="number" formControlName="age" />
+          </mat-form-field>
+          <mat-form-field class="input-field">
+            <mat-label>Gender</mat-label>
+            <input matInput type="text" formControlName="gender" />
+          </mat-form-field>
+        </div>
+        <div class="input-group">
+          <mat-form-field class="input-field">
+            <mat-label>Phone number</mat-label>
+            <input matInput type="tel" formControlName="phoneNumber" />
+          </mat-form-field>
+        </div>
+        <div class="submit-container">
+          <button mat-raised-button color="primary" class="passenger-submit">
+            <mat-icon>person</mat-icon>
+            <mat-hint>Add Passenger</mat-hint>
+          </button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>
 
-<!-- </div> -->
+
+
+
+
+
+
+<!-- <div class="payments" *ngIf="passengers.length > 0">
+  <button mat-raised-button (click)="payments()">
+    Cost = {{ cost | currency : "₹" }}, Tap To Pay.
+  </button>
+</div>
+<div class="passenger-list" *ngIf="passengers.length > 0">
+  <div class="passenger-card" *ngFor="let item of passengers">
+    <a class="close-icon" (click)="OnRemovePassenger(item.id)">
+      <mat-icon>close</mat-icon>
+    </a>
+    <div class="card-title">{{ item.allocatedSeat }}</div>
+    <div class="card-content">
+      <h1>{{ item.firstName }} {{ item.lastName }}</h1>
+      <p>{{ item.phoneNumber }}</p>
+      <p>{{ item.gender }}</p>
+      <p>{{ item.age }}</p>
+      <p class="email">{{ item.email }}</p>
+      <p>{{ item.allocatedSeat }}</p>
+    </div>
+  </div>
+</div>
+
+<div
+  class="payments"
+  *ngIf="passengers.length > 0"
+  style="float: right; margin-right: 20px"
+>
+  <button mat-raised-button (click)="payments()">
+    Cost = {{ cost | currency : "₹" }}, Tap To Pay.
+  </button>
+</div> -->
+<!-- <div class="passenger-list" *ngIf="passengers.length > 0">
+  <div class="passenger-card" *ngFor="let item of passengers">
+    <a class="close-icon" (click)="OnRemovePassenger(item.id)">
+      <mat-icon>close</mat-icon>
+    </a>
+    <div class="card-title">{{item.allocatedSeat}}</div>
+    <div class="card-content">
+      <h1>{{item.firstName}} {{item.lastName}}</h1>
+      <p>{{item.phoneNumber}}</p>
+      <p>{{item.gender}}</p>
+      <p>{{item.age}}</p>
+      <p class="email">{{item.email}}</p>
+      <p>{{item.allocatedSeat}}</p>
+    </div>
+  </div>
+</div> -->

@@ -21,7 +21,7 @@ import { FlightSearchedComponent } from './Components/flight-searched/flight-sea
 import { UsersComponent } from './Components/User/users/users.component';
 import { BookingComponent } from './Components/booking/booking.component';
 import { BookingListComponent } from './Components/booking/bookingList/booking-list/booking-list.component';
-import { SeatComponent } from './Components/seat/seat.component';
+import { PaymentComponent } from './Components/Payments/payment/payment.component';
 
 
 
@@ -42,7 +42,7 @@ import { SeatComponent } from './Components/seat/seat.component';
     UsersComponent,
     BookingComponent,
     BookingListComponent,
-    SeatComponent,
+    PaymentComponent,
 
 
 
