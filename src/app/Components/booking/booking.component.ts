@@ -10,7 +10,7 @@ import DataService from 'src/app/Services/Data/data.service';
 import { FlightModule } from 'src/app/models/flight/flight.module';
 import { FlightsService } from 'src/app/Services/flights/flights.service';
 import { NgToastService } from 'ng-angular-popup';
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 
 @Component({
@@ -18,14 +18,9 @@ import { animate, style, transition, trigger } from '@angular/animations';
   templateUrl: './booking.component.html',
   styleUrls: ['./booking.component.css'],
   animations: [
-    trigger('enterAnimation', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(60px)' }),
-        animate(
-          '1000ms ease',
-          style({ opacity: 1, transform: 'translateY(0)' })
-        ),
-      ]),
+    trigger('fadeIn', [
+      state('void', style({ opacity: 0 })),
+      transition(':enter', animate('300ms ease-in')),
     ]),
   ],
 })

@@ -42,15 +42,10 @@
   </div>
 </mat-card> -->
 <div class="row">
-  <div class="seatscontainer">
-    <mat-grid-list
-      [cols]="cols.length"
-      class="seats"
-      style="padding-bottom: 0px"
-      rowHeight="1:0.4"
-    >
-      <div *ngFor="let row of rows">
-        <div *ngFor="let col of cols; let i = index">
+  <div class="seats-container">
+    <mat-grid-list [cols]="cols.length" class="seats" style="padding-bottom: 0px" rowHeight="1:0.4">
+      <ng-container *ngFor="let row of rows">
+        <ng-container *ngFor="let col of cols; let i = index">
           <mat-grid-tile>
             <mat-checkbox
               [id]="row + col"
@@ -58,16 +53,17 @@
               (change)="onSeatSelectionChange(row + col)"
               class="checkbox"
               color="secondary"
-              [@enterAnimation]
+              [@fadeIn]
             >
-              <div class="checkboxlabel">{{ row }}{{ col }}</div>
+              <div class="checkbox-label">{{ row }}{{ col }}</div>
             </mat-checkbox>
           </mat-grid-tile>
-        </div>
-      </div>
+        </ng-container>
+      </ng-container>
     </mat-grid-list>
   </div>
 </div>
+
 <div class="row">
   <div class="selected-seats">
     <h2>Selected Seats</h2>
