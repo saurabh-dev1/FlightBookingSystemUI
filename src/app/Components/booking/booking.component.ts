@@ -35,38 +35,31 @@ export class BookingComponent implements OnInit{
 
   seatselectionOption: boolean = false;
   passengerAddOption: boolean = false;
-  row: string[] = ['A', 'B', 'C', 'D', 'E','F'];
-  cols: number[] = [1, 2, 3, 4, 5, 6,];
+  row: string[] = ['A', 'B', 'C', 'D', 'E','F','G','H','I','J'];
+  cols: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   rows: string[] = [];
   currentseat: string = '';
-  searchedflight!:FlightModule;
+  searchedflight :any;
 
-  addFlightRequest : FlightModule ={
-    flightId: 0,
-    flightName: "sdf",
-    flightNumber: "afdv",
-    departureCity: "sd",
-    arrivalCity: "asd",
-    departureDateTime:new Date(),
-    arrivalDateTime:new Date() ,
-    departureCityCode: "ad",
-    arrivalCityCode: "asd",
-    basePrice: 45,
-    totalSeats: 54,
-    availableSeats: 54
 
-  };
 
 
 
   constructor(private builder: FormBuilder, private router: Router, private DataService: DataService,
     private bookingService: BookingService,
     private passengerService: PassengersService,
-    private flightService: FlightsService,
+    private dataService: DataService,
     private toast:NgToastService) {
 
-      this.searchedflight= this.addFlightRequest;
+
+      this.dataService.Data$.subscribe((res) => {
+      this.searchedflight = res;
       this.seatselection();
+      debugger
+      console.log(res);
+    });
+
+
     }
     selectedSeats: string[] = [];
 
@@ -190,16 +183,18 @@ export class BookingComponent implements OnInit{
 // For seats
 //seat selection after adding passengers
 seatselection() {
+  debugger
   this.seatselectionOption = !this.seatselectionOption;
-
+  debugger
   if (this.searchedflight === null) {
     this.toast.warning({detail:"Error", duration: 5000});
   }
-
-  let val: number = this.searchedflight.totalSeats;
-  for (let i = 1; i < val / 10; i++) {
+  console.log(this.searchedflight[0]);
+  let val: number = this.searchedflight[0].totalSeats;
+  for (let i = 0; i < val / 10; i++) {
     this.rows.push(this.row[i]);
   }
+  debugger
 }
 
 //selected seats to display.

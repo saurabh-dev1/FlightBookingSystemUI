@@ -57,7 +57,7 @@ export class HomePageComponent implements OnInit {
 
               this.DataService.setData(res);
 
-
+              debugger
               this.router.navigate(['flightSearched']);
             },
             (err) => {

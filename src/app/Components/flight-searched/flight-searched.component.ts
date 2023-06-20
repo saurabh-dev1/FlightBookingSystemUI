@@ -73,7 +73,6 @@ convertToNumberfromstring(value: string | null): number | null
     this.AddBookingForm.value.flightId= flight.flightId;
     this.AddBookingForm.value.userId= userId;
 
-
     this.bookingService.addBooking(this.AddBookingForm.value).subscribe((res: any) => {
      // console.log(this.AddBookingForm.value.departureDate + "departure date hai  3")
      // res.departureDate = this.AddBookingForm.value.departureDate

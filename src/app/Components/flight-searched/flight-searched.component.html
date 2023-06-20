@@ -51,6 +51,7 @@
               <span class="arrivalTime">Arrival time: {{flight.arrivalDateTime | date:'HH:mm' }}</span>
             </p>
             <p class="departure-date">Departure Date: {{ flight.departureDateTime | date: 'yyyy-MM-dd' }}</p>
+            <p class="departure-date">Total Seats: {{ flight.totalSeats}}</p>
           </div>
           <div class="booking">
             <p class="price">Price: {{ flight.basePrice }}</p>
