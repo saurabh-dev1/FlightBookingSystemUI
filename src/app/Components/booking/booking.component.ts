@@ -132,6 +132,7 @@ export class BookingComponent implements OnInit{
       debugger
    if(this.AddPassengerForm.valid){
     debugger
+    this.AddPassengerForm.value.allocatedSeat = this.currentseat;
     const passenger: PassengerModule = {
       passengerId: 0,
       firstName: this.AddPassengerForm.value.firstName ?? '',
@@ -144,7 +145,8 @@ export class BookingComponent implements OnInit{
         flightBookingId:bId
 
     };
-    this.AddPassengerForm.value.allocatedSeat = this.currentseat;
+    debugger
+
     this.passengerService.addPassenger(passenger).subscribe((res: any) => {
 
       this.passengers.push (res);
@@ -231,6 +233,7 @@ onSeatSelectionChange(seat: string) {
 
   //add passenger opiton
   addPassengerOption(seat: string) {
+    debugger
     this.currentseat = seat;
     this.passengerAddOption = !this.passengerAddOption;
   }

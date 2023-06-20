@@ -95,3 +95,41 @@
 .passenger-submit mat-icon {
   margin-right: 5px;
 }
+
+.row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.passenger-details {
+  width: 600px;
+}
+
+mat-card {
+  padding: 20px;
+  background-color: #f2f2f2;
+}
+
+h2 {
+  margin: 0 0 20px;
+}
+
+.passenger-item {
+  margin-bottom: 20px;
+}
+
+.passenger-name {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.passenger-info {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.info-item {
+  width: 50%;
+  margin-bottom: 5px;
+}

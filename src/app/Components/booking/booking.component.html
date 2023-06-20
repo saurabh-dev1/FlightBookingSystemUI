@@ -132,6 +132,22 @@
   </div>
 </div>
 
+<div class="row">
+  <div class="passenger-details" *ngIf="passengers.length >= 1">
+    <mat-card>
+      <h2>Passenger Details</h2>
+      <div *ngFor="let passenger of passengers" class="passenger-item">
+        <div class="passenger-name">{{ passenger.firstName }} {{ passenger.lastName }}</div>
+        <div class="passenger-info">
+          <div class="info-item">Age: {{ passenger.age }}</div>
+          <div class="info-item">Gender: {{ passenger.gender }}</div>
+          <div class="info-item">Phone Number: {{ passenger.phoneNumber }}</div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>
+
 
 
 
