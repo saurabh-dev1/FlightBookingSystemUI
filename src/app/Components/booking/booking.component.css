@@ -29,10 +29,12 @@
   margin-top: 5px;
 }
 
+
 .selected-seats {
   width: 600px;
-  background-color: #f2f2f2;
+  background-color: #9f9b9b;
   padding: 10px;
+  margin-left: -850px;
 }
 
 .selected-seats h2 {
@@ -58,6 +60,7 @@
   width: 600px;
   background-color: #f2f2f2;
   padding: 20px;
+  margin-left: -850px;
 }
 
 .title {
@@ -108,6 +111,9 @@
 
 .passenger-details {
   width: 600px;
+  margin-left: 700px;
+  margin-top: -560px;
+  border-style: inset;
 }
 
 mat-card {

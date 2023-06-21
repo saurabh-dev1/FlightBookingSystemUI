@@ -55,6 +55,7 @@
               color="secondary"
               [@fadeIn]
             >
+
               <div class="checkbox-label">{{ row }}{{ col }}</div>
             </mat-checkbox>
           </mat-grid-tile>
@@ -79,7 +80,7 @@
     </div>
   </div>
 </div>
-<div class="row">
+<div class="row" >
   <div class="passenger-form" *ngIf="passengerAddOption">
     <mat-card>
       <div class="title">
@@ -128,21 +129,36 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="passenger-details" *ngIf="passengers.length >= 1">
+<div class="row" *ngIf="passengers.length >= 1">
+  <div class="passenger-details" >
+    <h2>Passenger Details</h2>
+    <div *ngFor="let passenger of passengers" class="passenger-item">
     <mat-card>
-      <h2>Passenger Details</h2>
-      <div *ngFor="let passenger of passengers" class="passenger-item">
-        <div class="passenger-name">{{ passenger.firstName }} {{ passenger.lastName }}</div>
-        <div class="passenger-info">
-          <div class="info-item">Age: {{ passenger.age }}</div>
+      <a class="close-icon" (click)="cancelPassenger(passenger.passengerId)">
+        <mat-icon>close</mat-icon>
+      </a>
+      <mat-card-header>
+        <mat-card-title class="passenger-name">{{ passenger.firstName }} {{ passenger.lastName }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="passenger-info">
+        <div class="info-item">Age: {{ passenger.age }}</div>
           <div class="info-item">Gender: {{ passenger.gender }}</div>
           <div class="info-item">Phone Number: {{ passenger.phoneNumber }}</div>
-        </div>
-      </div>
+          <div class="info-item">Phone Number: {{ passenger.allocatedSeat }}</div>
+      </mat-card-content>
     </mat-card>
   </div>
+  <div *ngIf="passengers.length > 0">
+    <button mat-raised-button color="primary" routerLink="/payment">
+        Book
+      </button>
+      <!-- <button mat-raised-button (click)="payments()">
+        Cost = {{ cost | currency : "₹" }}, Tap To Pay.
+      </button> -->
+    </div>
+  </div>
 </div>
+
 
 
 

@@ -14,4 +14,6 @@ export interface FlightModule {
   totalSeats: number,
   availableSeats: number
 
+
+
 }

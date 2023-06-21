@@ -227,6 +227,8 @@ onSeatSelectionChange(seat: string) {
     this.currentseat = seat;
     this.passengerAddOption = !this.passengerAddOption;
   }
+
+
 }
 
 
