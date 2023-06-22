@@ -204,7 +204,7 @@ seatselection() {
   this.seatselectionOption = !this.seatselectionOption;
   debugger
   if (this.searchedflight === null) {
-    this.toast.warning({detail:"Error", duration: 5000});
+    this.toast.warning({detail:"Search Flight Again!!", duration: 5000});
   }
   console.log(this.searchedflight[0]);
   let val: number = this.searchedflight[0].totalSeats;
@@ -250,6 +250,15 @@ onSeatSelectionChange(seat: string) {
     this.passengerAddOption = !this.passengerAddOption;
   }
 
+  //for button
+  getButtonStyle(seat: string) {
+    debugger
+    if (seat === this.currentseat) {
+      return { 'background-color': 'green', 'color': '#fff' };
+    } else {
+      return {};
+    }
+  }
 
 
   logout(){
