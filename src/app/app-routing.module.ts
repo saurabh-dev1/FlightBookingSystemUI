@@ -13,6 +13,7 @@ import { UsersComponent } from './Components/User/users/users.component';
 import { BookingComponent } from './Components/booking/booking.component';
 import { BookingListComponent } from './Components/booking/bookingList/booking-list/booking-list.component';
 import { PaymentComponent } from './Components/Payments/payment/payment.component';
+import { AuthGuard } from './Guards/auth.guard';
 
 
 
@@ -26,30 +27,42 @@ const routes: Routes = [
 
 
   {
-    path: 'Admin', children:[{
-      path: '', component: AdminNavbarComponent
+    path: 'Admin',
+    canActivate: [AuthGuard],
+    children:[{
+
+      path: '', component: AdminNavbarComponent,
+      canActivate: [AuthGuard]
+
     },
   {
-    path:'flights', component: FlightsComponent
+    path:'flights', component: FlightsComponent,
+    canActivate: [AuthGuard]
   },
   {
-    path:'users', component: UsersComponent
+    path:'users', component: UsersComponent,
+    canActivate: [AuthGuard]
     }
- ]},
+ ],
+ },
  {
-  path:'users', component: UsersComponent
+  path:'users', component: UsersComponent,
+  canActivate: [AuthGuard]
   },
 
   {
-    path:'addFlight', component: AddFlightsComponent
+    path:'addFlight', component: AddFlightsComponent,
+    canActivate: [AuthGuard]
   },
 
   {
     path: 'flights',
-  component: FlightsComponent
+  component: FlightsComponent,
+  canActivate: [AuthGuard]
     },
   {
-    path: 'Edit/:id', component: EditFlightsComponent
+    path: 'Edit/:id', component: EditFlightsComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'Login',
@@ -59,14 +72,11 @@ const routes: Routes = [
     path: 'SignUp',
     component: SignUpComponent
   },
-  {
-    path: 'Login/SignUp',
-    component: SignUpComponent
-  },
 
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'flightSearched',
@@ -74,15 +84,18 @@ const routes: Routes = [
   },
   {
     path: 'booking',
-    component: BookingComponent
+    component: BookingComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'bookingList',
-    component: BookingListComponent
+    component: BookingListComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'payment',
-    component: PaymentComponent
+    component: PaymentComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

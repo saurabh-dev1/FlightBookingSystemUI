@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import DataService from 'src/app/Services/Data/data.service';
+import { AuthService } from 'src/app/Services/auth.service';
 import { BookingService } from 'src/app/Services/booking/booking.service';
 import { FlightsService } from 'src/app/Services/flights/flights.service';
 import { FlightModule } from 'src/app/models/flight/flight.module';
@@ -13,7 +14,8 @@ import { FlightModule } from 'src/app/models/flight/flight.module';
 })
 export class DashboardComponent {
 
-  constructor( private flightService: FlightsService,private bookingService: BookingService, private router: Router,private builder:FormBuilder, private DataService: DataService) {}
+  constructor( private flightService: FlightsService,private bookingService: BookingService, private router: Router,private builder:FormBuilder, private DataService: DataService,
+    private authService: AuthService) {}
 
   flightDetail: FlightModule ={
     flightId: 0,
@@ -80,5 +82,8 @@ debugger
       userId: this.builder.control(0, Validators.required),
     })
 
+    logout(){
+      this.authService.signOut();
+    }
     }
 

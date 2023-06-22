@@ -1,0 +1,17 @@
+.payment-card {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.icon {
+  margin-right: 8px;
+  color: rgb(55, 123, 212);
+}
+
+#booking {
+	font-family: 'Lato', sans-serif;
+	background-image: url('/assets/background.jpg');
+	background-size: cover;
+	background-position: center;
+	color: #191a1e;
+}

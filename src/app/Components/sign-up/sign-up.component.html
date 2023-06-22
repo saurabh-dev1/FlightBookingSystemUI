@@ -44,6 +44,8 @@
         </div>
       </div>
       <small *ngIf="signUpform.controls['userName'].dirty && signUpform.hasError('required','userName')" class="text-danger">*name is required</small>
+      <small *ngIf="signUpform.get('userName')?.dirty && signUpform.get('userName')?.hasError('minlength')" class="text-danger">*Username must be at least 4 characters long</small>
+
 
       <div class="input-div one">
         <div class="i">

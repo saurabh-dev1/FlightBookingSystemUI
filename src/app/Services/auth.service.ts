@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {  Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
   private baseUrl:string = "http://localhost:5238/api/Auth/"
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private router: Router) { }
 
   signUp(userObj:any):Observable<any> {
     debugger
@@ -29,11 +30,16 @@ export class AuthService {
     return localStorage.getItem('token')
   }
 
+  signOut(){
+    localStorage.clear();
+    this.router.navigate(['Login'])
+  }
   isLoggedIn(): boolean{
     return !!localStorage.getItem('token')
   }
 
   getrole(){
+    debugger
     return sessionStorage.getItem('role')!=null?sessionStorage.getItem('role')?.toString():'';
   }
 }

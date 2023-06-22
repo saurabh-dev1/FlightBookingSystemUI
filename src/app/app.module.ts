@@ -9,7 +9,7 @@ import { AdminNavbarComponent } from './Components/admin-navbar/admin-navbar.com
 import { LoginComponent } from './Components/login/login.component';
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { HomePageComponent } from './Components/home-page/home-page.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FlightsComponent } from './Components/flights/flights.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { ToastrModule } from 'ngx-toastr';
@@ -22,6 +22,7 @@ import { UsersComponent } from './Components/User/users/users.component';
 import { BookingComponent } from './Components/booking/booking.component';
 import { BookingListComponent } from './Components/booking/bookingList/booking-list/booking-list.component';
 import { PaymentComponent } from './Components/Payments/payment/payment.component';
+import { TokenInterceptor } from './Interceptors/token.interceptor';
 
 
 
@@ -61,7 +62,11 @@ import { PaymentComponent } from './Components/Payments/payment/payment.componen
 
 
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,1 +1,56 @@
-<p>payment works!</p>
+<div id="booking">
+<mat-card class="payment-card">
+  <mat-card-header>
+    <mat-card-title>Payment</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form>
+      <!-- Payment details form fields -->
+      <mat-form-field>
+        <mat-label>
+          <mat-icon class="icon">credit_card</mat-icon>
+          Card Number
+        </mat-label>
+        <input matInput   name="cardNumber" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>
+          <mat-icon class="icon">event</mat-icon>
+          Expiration Date
+        </mat-label>
+        <input matInput   name="expirationDate" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>
+          <mat-icon class="icon">lock</mat-icon>
+          CVV
+        </mat-label>
+        <input matInput  name="cvv" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>
+          <mat-icon class="icon">person</mat-icon>
+          Name on Card
+        </mat-label>
+        <input matInput   name="cardName" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>
+          <mat-icon class="icon">attach_money</mat-icon>
+          Amount
+        </mat-label>
+        <input matInput  name="amount" required>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="primary" >Make Payment</button>
+    <button mat-button color="warn" >Cancel</button>
+  </mat-card-actions>
+</mat-card>
+
+</div>
