@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import DataService from 'src/app/Services/Data/data.service';
 import { AuthService } from 'src/app/Services/auth.service';
 import { BookingService } from 'src/app/Services/booking/booking.service';
@@ -15,7 +16,10 @@ import { FlightModule } from 'src/app/models/flight/flight.module';
 export class DashboardComponent {
 
   constructor( private flightService: FlightsService,private bookingService: BookingService, private router: Router,private builder:FormBuilder, private DataService: DataService,
-    private authService: AuthService) {}
+    private authService: AuthService,
+    private toastService: NgToastService) {}
+
+    searchflightsform!: FormGroup;
 
   flightDetail: FlightModule ={
     flightId: 0,
@@ -35,14 +39,14 @@ export class DashboardComponent {
 
 
   ngOnInit(): void {
-
+    this.searchflightsform = this.builder.group({
+      departureCity: ['',Validators.required],
+      arrivalCity: ['',Validators.required],
+      departureDateTime: ['',Validators.required],
+    });
 
   }
-  searchflightsform = this.builder.group({
-    departureCity: this.builder.control(''),
-    arrivalCity: this.builder.control(''),
-    departureDateTime: this.builder.control('')
-  });
+
 
   searchFlights(){
 
@@ -64,7 +68,9 @@ debugger
               this.router.navigate(['flightSearched']);
             },
             (err) => {
+
               console.log(err);
+              this.toastService.error({detail: 'No Flights Found' })
             }
             )
 
@@ -85,5 +91,20 @@ debugger
     logout(){
       this.authService.signOut();
     }
+
+
+    cityValidator(builder: FormGroup) {
+      const departureCity = builder.get('departureCity')?.value;
+      const arrivalCity = builder.get('arrivalCity')?.value;
+
+      if (departureCity && arrivalCity && departureCity.toLowerCase() === arrivalCity.toLowerCase()) {
+        return { invalidCities: true };
+      }
+
+      return null;
+    }
+
+
+
     }
 

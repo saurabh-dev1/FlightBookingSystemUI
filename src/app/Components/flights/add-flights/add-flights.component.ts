@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/Services/auth.service';
 import { FlightsService } from 'src/app/Services/flights/flights.service';
 import { FlightModule } from 'src/app/models/flight/flight.module';
 
@@ -26,7 +27,7 @@ export class AddFlightsComponent implements OnInit {
 
     };
 
-    constructor(private flightService: FlightsService, private router: Router){}
+    constructor(private authService: AuthService,private flightService: FlightsService, private router: Router){}
 
   ngOnInit(): void {
 
@@ -45,4 +46,7 @@ export class AddFlightsComponent implements OnInit {
     })
   }
 
+  logout(){
+    this.authService.signOut();
+  }
 }

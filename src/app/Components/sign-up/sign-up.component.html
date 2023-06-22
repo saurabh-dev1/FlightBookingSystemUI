@@ -45,8 +45,6 @@
       </div>
       <small *ngIf="signUpform.controls['userName'].dirty && signUpform.hasError('required','userName')" class="text-danger">*name is required</small>
       <small *ngIf="signUpform.get('userName')?.dirty && signUpform.get('userName')?.hasError('minlength')" class="text-danger">*Username must be at least 4 characters long</small>
-
-
       <div class="input-div one">
         <div class="i">
           <i class="fa fa-solid fa-envelope"></i>
@@ -57,6 +55,7 @@
         </div>
       </div>
       <small *ngIf="signUpform.controls['emailAddress'].dirty && signUpform.hasError('required','emailAddress')" class="text-danger">*email is required</small>
+      <small *ngIf="signUpform.get('emailAddress')?.dirty && signUpform.hasError('invalidEmail', 'emailAddress')" class="text-danger">Email should end with @gmail.com</small>
 
       <div class="input-div pass">
         <div class="i">
@@ -68,6 +67,7 @@
         </div>
       </div>
       <small *ngIf="signUpform.controls['password'].dirty && signUpform.hasError('required','password')" class="text-danger">*password is required</small>
+      <small *ngIf="signUpform.get('password')?.dirty && signUpform.get('password')?.hasError('minlength')" class="text-danger">*Password must be at least 8 characters long</small>
 
       <div class="input-div pass">
         <div class="i">
@@ -80,6 +80,7 @@
       </div>
 
       <small *ngIf="signUpform.controls['phoneNo'].dirty && signUpform.hasError('required','phoneNo')" class="text-danger">*phoneno is required</small>
+      <small *ngIf="signUpform.get('phoneNo')?.dirty && signUpform.hasError('invalidPhoneNo', 'phoneNo')" class="text-danger">Invalid Phone number</small>
 
 
 

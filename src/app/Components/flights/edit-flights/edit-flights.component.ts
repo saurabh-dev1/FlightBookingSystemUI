@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/Services/auth.service';
 import { FlightsService } from 'src/app/Services/flights/flights.service';
 import { FlightModule } from 'src/app/models/flight/flight.module';
 
@@ -24,7 +25,7 @@ export class EditFlightsComponent implements OnInit {
       totalSeats: 0,
       availableSeats: 0
   }
-  constructor(private route : ActivatedRoute, private flightService: FlightsService, private router: Router) {}
+  constructor(private authService: AuthService, private route : ActivatedRoute, private flightService: FlightsService, private router: Router) {}
 
   ngOnInit(): void{
     this.route.params.subscribe({
@@ -63,4 +64,8 @@ export class EditFlightsComponent implements OnInit {
     });
   }
 
+
+  logout(){
+    this.authService.signOut();
+  }
 }

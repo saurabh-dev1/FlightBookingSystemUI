@@ -11,6 +11,7 @@ import { FlightModule } from 'src/app/models/flight/flight.module';
 import { FlightsService } from 'src/app/Services/flights/flights.service';
 import { NgToastService } from 'ng-angular-popup';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { AuthService } from 'src/app/Services/auth.service';
 
 
 @Component({
@@ -40,7 +41,10 @@ export class BookingComponent implements OnInit{
 
 
 
-  constructor(private builder: FormBuilder, private router: Router, private DataService: DataService,
+  constructor(private authService: AuthService,
+    private builder: FormBuilder,
+     private router: Router,
+     private DataService: DataService,
     private bookingService: BookingService,
     private passengerService: PassengersService,
     private dataService: DataService,
@@ -228,6 +232,10 @@ onSeatSelectionChange(seat: string) {
     this.passengerAddOption = !this.passengerAddOption;
   }
 
+
+  logout(){
+    this.authService.signOut();
+  }
 
 }
 

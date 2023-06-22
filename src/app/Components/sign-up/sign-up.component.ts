@@ -17,9 +17,9 @@ export class SignUpComponent implements OnInit{
   ngOnInit(): void {
     this.signUpform = this.fb.group({
       userName: ['',[Validators.required, Validators.minLength(4)]],
-      emailAddress: ['',Validators.required],
-      password:['', Validators.required],
-      phoneNo: ['',Validators.required],
+      emailAddress: ['',[Validators.required, this.emailValidator]],
+      password:['',[Validators.required, Validators.minLength(8)]],
+      phoneNo: ['',[Validators.required, this.phoneNoValidator]],
 
     })
 
@@ -86,6 +86,20 @@ export class SignUpComponent implements OnInit{
     })
   }
 
+  emailValidator(control: FormControl) {
+    const email = control.value;
+    if (email && !email.endsWith('@gmail.com')) {
+      return { invalidEmail: true };
+    }
+    return null;
+  }
 
 
+  phoneNoValidator(control: FormControl) {
+    const phoneNo = control.value;
+    if (phoneNo && !(/^[9876]/).test(phoneNo.charAt(0))) {
+      return { invalidPhoneNo: true };
+    }
+    return null;
+  }
 }

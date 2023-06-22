@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/Services/Users/users.service';
+import { AuthService } from 'src/app/Services/auth.service';
 import { UserModule } from 'src/app/models/user/user/user.module';
 
 @Component({
@@ -9,7 +10,7 @@ import { UserModule } from 'src/app/models/user/user/user.module';
 })
 export class UsersComponent implements OnInit{
 
-  constructor(private userService: UsersService){}
+  constructor(private authService: AuthService,private userService: UsersService){}
 
   users: UserModule[] = [];
   ngOnInit(): void {
@@ -41,5 +42,9 @@ export class UsersComponent implements OnInit{
     }else{
 
     }
+  }
+
+  logout(){
+    this.authService.signOut();
   }
 }

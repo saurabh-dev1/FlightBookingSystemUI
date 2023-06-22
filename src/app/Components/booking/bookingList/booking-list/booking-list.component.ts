@@ -5,6 +5,7 @@ import { FlightModule } from 'src/app/models/flight/flight.module';
 import { BookingModule } from 'src/app/models/flightbooking/booking/booking.module';
 import { UserModule } from 'src/app/models/user/user/user.module';
 import { UsersService } from 'src/app/Services/Users/users.service';
+import { AuthService } from 'src/app/Services/auth.service';
 
 
 
@@ -41,7 +42,7 @@ export class BookingListComponent implements OnInit{
  users: any;
 
 
-  constructor ( private bookingService: BookingService, private flightService: FlightsService, private userService: UsersService){}
+  constructor (private authService: AuthService, private bookingService: BookingService, private flightService: FlightsService, private userService: UsersService){}
 
 
   bookings: BookingModule[] = [];
@@ -128,7 +129,9 @@ export class BookingListComponent implements OnInit{
     }
   }
 
-
+  logout(){
+    this.authService.signOut();
+  }
 
 
 

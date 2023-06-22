@@ -62,12 +62,16 @@
                     <span class="form-label">Flying from</span>
                     <input class="form-control" type="text" formControlName="departureCity" placeholder="City or airport">
                   </div>
+                  <small *ngIf="searchflightsform.controls['departureCity'].dirty && searchflightsform.hasError('required','departureCity')" class="text-danger">*city is required</small>
+
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <span class="form-label">Flyning to</span>
                     <input class="form-control" formControlName="arrivalCity" type="text" placeholder="City or airport">
                   </div>
+                  <small *ngIf="searchflightsform.controls['arrivalCity'].dirty && searchflightsform.hasError('required','arrivalCity')" class="text-danger">*city is required</small>
+
                 </div>
               </div>
               <div class="row">
