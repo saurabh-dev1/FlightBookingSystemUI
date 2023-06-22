@@ -36,7 +36,7 @@ export class BookingComponent implements OnInit{
   rows: string[] = [];
   currentseat: string = '';
   searchedflight :any;
-
+  amount: number = 0;
 
 
 
@@ -150,6 +150,7 @@ export class BookingComponent implements OnInit{
     this.toast.error({detail:"All blanks required!", duration: 5000});
   }
     }
+    this.calculateAmountOnAdd();
   }
 
 
@@ -174,9 +175,26 @@ export class BookingComponent implements OnInit{
          this.toast.warning({detail:"Error", duration: 5000});
        }
      })
-
+     this.calculateAmountOnremove();
    }
 
+
+   //get passenger by id
+   getPassengers() {
+    debugger
+    let id: number | null = this.convertToNumberfromstring(sessionStorage.getItem('bookingid') );
+    if(id!==null){
+    this.passengerService.getPassenger(id).subscribe((res: any) => {
+      if (res) {
+        debugger
+        this.passengers = res;
+      } else {
+        this.toast.warning(res.message);
+      }
+    });
+    this.calculateAmount();
+  }
+}
 
 
 // For seats
@@ -233,10 +251,33 @@ onSeatSelectionChange(seat: string) {
   }
 
 
+
   logout(){
     this.authService.signOut();
   }
 
+
+  payments() {
+    this.router.navigate(['payment', this.amount]);
+  }
+
+  private calculateAmount() {
+    debugger
+    for (let i = 0; i < this.passengers.length; i++) {
+      this.amount += this.searchedflight[0].basePrice;
+    }
+  }
+
+  private calculateAmountOnAdd() {
+    debugger
+    this.amount += this.searchedflight[0].basePrice;
+
+  }
+  private calculateAmountOnremove() {
+    debugger
+    this.amount -= this.searchedflight[0].basePrice;
+
+  }
 }
 
 

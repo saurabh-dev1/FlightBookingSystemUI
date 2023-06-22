@@ -1,7 +1,7 @@
 <nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
   <div class="container-fluid">
     <div id="logo">
-      <a href="index.html"><img src="../../assets/jetsetgo.png" /></a>
+      <a routerLink="/dashboard"><img src="../../assets/jetsetgo.png" /></a>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -109,7 +109,7 @@
   </div>
 </div>
 <div class="row" >
-  <div class="passenger-form" *ngIf="passengerAddOption">
+  <div class="passenger-form" >
     <mat-card>
       <div class="title">
         <h1>Passenger for seat: {{ currentseat }}</h1>
@@ -177,12 +177,10 @@
     </mat-card>
   </div>
   <div *ngIf="passengers.length > 0">
-    <button mat-raised-button color="primary" routerLink="/payment">
-        Book
+    <button mat-raised-button color="primary" (click)="payments()">
+      Amount = {{ amount | currency : "₹" }}, Tap To Pay.
       </button>
-      <!-- <button mat-raised-button (click)="payments()">
-        Cost = {{ cost | currency : "₹" }}, Tap To Pay.
-      </button> -->
+
     </div>
   </div>
 </div>
