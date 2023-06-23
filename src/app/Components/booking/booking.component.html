@@ -178,7 +178,7 @@
   </div>
   <div *ngIf="passengers.length > 0">
     <button mat-raised-button color="primary" (click)="payments()">
-      Amount = {{ amount | currency : "₹" }}, Tap To Pay.
+      Amount = Pay {{ amount | currency : "₹" }}
       </button>
 
     </div>

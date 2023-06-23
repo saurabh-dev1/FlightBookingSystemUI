@@ -1,17 +1,207 @@
-.payment-card {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-}
+
+
 .icon {
   margin-right: 8px;
   color: rgb(55, 123, 212);
 }
 
+
+
+.booking-detail-wrap .booking-detail-card {
+  overflow: inherit;
+  z-index: auto;
+}
+
+.booking-detail-card {
+  padding: 0.7rem 0.75rem;
+  background: #fff;
+}
+
+.booking-detail-card{
+  margin-bottom: 1.25rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 5px rgb(0 0 0 / 40%);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow .5s ease-in-out;
+  z-index: 0;
+  width: 70%;
+  margin-left: 10%;
+}
+
+.booking-detail-card {
+  padding: 0;
+}
+
+
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+div {
+  display: block;
+}
+
+.section-heading {
+  padding: 0.5rem;
+  color: #fff;
+  border-radius: 0;
+  height: 40px;
+  font-size: medium;
+}
+
+.section-heading {
+  background-size: 400% 400%;
+}
+
+.section-heading {
+  background: linear-gradient(-45deg,#332b67,#28558e,#332b67,#28558e);
+  animation: 20s infinite gradient;
+}
+.mr-2, .mx-2 {
+  margin-right: 0.5rem!important;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.booking-detail-in-wrap {
+  margin: 0;
+  box-shadow: 0 0 5px rgb(0 0 0 / 40%);
+}
+
+.booking-detail-in, .search-rt-international>div:first-child {
+  padding: 0.5rem;
+}
+.booking-detail-flight-dest:before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  height: calc(100% - 40px);
+  border-left: 2px dashed #dddada;
+  left: 123px;
+}
+.booking-detail-flight {
+  text-align: left;
+  font-size: 14px;
+}
+.booking-detail-flight-dest {
+  display: flex;
+  justify-content: space-between;
+  background: #f7f7f7;
+  padding: 0.5rem;
+  margin-top: 10px;
+  font-size: 14px;
+  position: relative;
+  height: 100px;
+}
+
+.booking-detail-flight-info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background: #fff;
+  padding: 0 0.4rem;
+  width: 60px;
+  font-size: 11px;
+}
+
+.bkdetl-flight-dest-left {
+  flex: 4;
+  border-right: 2px dashed #dddada;
+  margin-left: 15px;
+}
+
+.leftDown{
+  margin-top: 45px;
+}
+.bkdetl-flight-dest-right {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  flex: 1;
+  font-size: 13px;
+  justify-content: center;
+}
+.fa-circle-o::before {
+  content: "\f10c";
+}
 #booking {
 	font-family: 'Lato', sans-serif;
 	background-image: url('/assets/background.jpg');
 	background-size: cover;
 	background-position: center;
 	color: #191a1e;
+}
+
+.payment-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 16px;
+  width: 400px;
+  margin: 0 auto;
+}
+
+.payment-card-header {
+  margin-bottom: 16px;
+}
+
+.payment-card-title {
+  font-size: 18px;
+  margin: 0;
+}
+
+.payment-card-content {
+  margin-bottom: 16px;
+}
+
+.form-field {
+  margin-bottom: 16px;
+}
+
+.form-field label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.form-field input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.icon {
+  margin-right: 8px;
+}
+
+.payment-card-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.payment-button {
+  padding: 8px 16px;
+  margin-left: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  outline: none;
+}
+
+.payment-button-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.payment-button-warn {
+  background-color: #dc3545;
+  color: #fff;
 }

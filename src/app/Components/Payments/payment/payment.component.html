@@ -28,58 +28,117 @@
   </div>
 </nav>
 <div id="booking">
-<mat-card class="payment-card">
-  <mat-card-header>
-    <mat-card-title>Payment</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <form>
-      <!-- Payment details form fields -->
-      <mat-form-field>
-        <mat-label>
-          <mat-icon class="icon">credit_card</mat-icon>
-          Card Number
-        </mat-label>
-        <input matInput   name="cardNumber" required>
-      </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>
-          <mat-icon class="icon">event</mat-icon>
-          Expiration Date
-        </mat-label>
-        <input matInput   name="expirationDate" required>
-      </mat-form-field>
+  <mat-card class="booking-detail-card">
+    <div class="section-heading">
+      <i class="fa fa-plane mr-2"></i>
+      Flight Detail
+    </div>
+    <div class="booking-detail-in booking-detail-in-wrap">
+      <div class="booking-detail-flight">
+        <strong>{{searchedFlight.departureCity}}</strong>
+        <i class="fa fa-plane mx-2"></i>
+        <strong>{{searchedFlight.arrivalCity}}</strong>
+        <span>{{searchedFlight.departureDateTime}}</span>
+      </div>
+      <div class="booking-detail-flight-dest">
 
-      <mat-form-field>
-        <mat-label>
-          <mat-icon class="icon">lock</mat-icon>
-          CVV
-        </mat-label>
-        <input matInput  name="cvv" required>
-      </mat-form-field>
+        <div class="booking-detail-flight-info">
+          <img src="../../assets/jetsetgo.png" title="AI" alt="AI">
+          <b>{{searchedFlight.flightName}}</b>
+        </div>
+        <div class="bkdetl-flight-dest-left">
+          <div>
+            <strong>{{searchedFlight.departureDateTime | date:'HH:mm' }}</strong>
+            <i class="fa "></i>
+            <strong>{{searchedFlight.departureCity}}</strong>
+            <!-- <span>Chhatrapati Shivaji Terminal 2</span> -->
+          </div>
 
-      <mat-form-field>
-        <mat-label>
-          <mat-icon class="icon">person</mat-icon>
-          Name on Card
-        </mat-label>
-        <input matInput   name="cardName" required>
-      </mat-form-field>
+          <div class="leftDown">
+            <strong>{{searchedFlight.arrivalDateTime | date: 'HH:mm'}}</strong>
+            <i class="fa "></i>
+            <strong>{{searchedFlight.arrivalCity}}</strong>
+            <!-- <span>Sardar Vallabh Bhai Patel Intl Arpt Terminal 1</span> -->
+          </div>
+        </div>
+        <div class="bkdetl-flight-dest-right">
+          <div>
+            <div>
+              <i class="fa fa-briefcase mr-1">
+                <span class="tooltipbriefcase">Hand Baggage</span>
+              </i>
+              7 kg
+            </div>
+            <div>
+              <i class="fa fa-suitcase mr-1">
+                <span class="tooltipsuitcase">Check-in Baggage</span>
+              </i>
+              25 kg
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
 
-      <mat-form-field>
-        <mat-label>
-          <mat-icon class="icon">attach_money</mat-icon>
-          Amount
-        </mat-label>
-        <input matInput  name="amount" required>
-      </mat-form-field>
-    </form>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button color="primary" >Make Payment</button>
-    <button mat-button color="warn" >Cancel</button>
-  </mat-card-actions>
-</mat-card>
+
+
+
+
+
+  <div class="payment-card">
+    <div class="payment-card-header">
+      <h3 class="payment-card-title">Payment</h3>
+    </div>
+    <div class="payment-card-content">
+      <form [formGroup]="paymentForm" (ngsubmit)="Payment()">
+        <div class="form-field">
+          <label>
+            <!-- <i class="fas fa-credit-card icon"></i> -->
+            Card Number
+          </label>
+          <input formControlName="cardNumber">
+        </div>
+
+        <div class="form-field">
+          <label>
+            <!-- <i class="fas fa-calendar-alt icon"></i> -->
+            Expiration Date
+          </label>
+          <input formControlName="expirationDate">
+        </div>
+
+        <div class="form-field">
+          <label>
+            <!-- <i class="fas fa-lock icon"></i> -->
+            CVV
+          </label>
+          <input formControlName="cvv">
+        </div>
+
+        <div class="form-field">
+          <label>
+            <!-- <i class="fas fa-user icon"></i> -->
+            Name on Card
+          </label>
+          <input formControlName="cardName">
+        </div>
+
+        <div class="form-field">
+          <label>
+            <!-- <i class="fas fa-money-bill icon"></i> -->
+            Amount
+          </label>
+          <input formControlName="amount" value={{amount}} >
+        </div>
+      </form>
+    </div>
+    <div class="payment-card-actions">
+      <button class="payment-button payment-button-primary" (click)="Payment()">Make Payment</button>
+      <button class="payment-button payment-button-warn">Cancel</button>
+    </div>
+  </div>
+
 
 </div>
