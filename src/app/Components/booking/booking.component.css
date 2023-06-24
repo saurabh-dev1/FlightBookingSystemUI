@@ -234,3 +234,189 @@ button.mat-raised-button.clicked {
   background-color: green;
   color: #fff;
 }
+
+
+
+
+
+
+.fare-detail-card {
+  font-size: 14px;
+  padding: 0;
+}
+.fare-detail-card, .right-searchbarbtm, .terms-wrap {
+  padding: 0.7rem 0.75rem;
+  background: #fff;
+}
+.fare-detail-card, .right-searchbarbtm, .terms-wrap {
+  margin-bottom: 1.25rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 5px rgb(0 0 0 / 40%);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow .5s ease-in-out;
+  z-index: 0;
+  margin-left: 55px;
+}
+div {
+  display: block;
+}
+.section-heading {
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+.section-heading {
+  padding: 0.5rem;
+  color: #fff;
+  border-radius: 0;
+}
+.section-heading {
+  background-size: 400% 400%;
+}
+.section-heading {
+  background: linear-gradient(-45deg,#332b67,#28558e,#332b67,#28558e);
+  animation: 20s infinite gradient;
+}
+.fa-pricebreakup {
+  background: url(https://www.air.irctc.co.in/assets/img/pricebreakup.webp) 0 0/cover no-repeat;
+  width: 13px;
+  height: 18px;
+  position: relative;
+  top: 2px;
+}
+.mr-2, .mx-2 {
+  margin-right: 0.5rem!important;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.pb-0, .py-0 {
+  padding-bottom: 0!important;
+}
+.fare-detail-head, .fare-type-filter, .top-filterbar-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+.pt-0, .py-0 {
+  padding-top: 0!important;
+}
+.RightBox-fareBreakup .fare-detail-card>div, .right-rt-searchbartop {
+  padding: 0.7rem 0.75rem;
+}
+.fare-chart>div {
+  border-bottom: 1px dashed #dddada;
+  display: block;
+  padding: 0.5rem 0;
+  overflow: hidden;
+}
+.fare-chart>div span {
+  width: 40%;
+  float: left;
+  text-align: right;
+}
+.fare-chart>div strong {
+  width: 60%;
+  float: left;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+.fare-chart>div label {
+  position: relative;
+  font: 500 14px/1.5 FontAwesome,Roboto,sans-serif;
+}
+
+.fare-chart>div label, .fare-chart>div strong {
+  width: 60%;
+  float: left;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+.collapse:not(.show) {
+  display: none;
+}
+
+.taxes-chart-wrap {
+  background: #fff;
+  margin: 0;
+  box-shadow: none;
+  border-radius: 0;
+  border: 1px dashed #dddada;
+  width: 100%;
+}
+.card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 0.25rem;
+}
+.taxes-chart {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  font-size: 12px;
+  padding: 0.2rem;
+  background: #f7f7f7;
+}
+.taxes-chart>div {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed #fff;
+  padding: 0.1rem;
+}
+.taxes-chart>div>span {
+  text-align: left;
+  width: auto;
+}
+
+.fare-chart>div span {
+  width: 40%;
+  float: left;
+  text-align: right;
+}
+.taxes-chart>div:last-child {
+  border-bottom: none;
+}
+.fare-chart>div:last-child {
+  border: none;
+  padding-bottom: 0;
+}
+.fare-chart>div label.collapsed::before {
+  content: "\f067";
+  margin-right: 3px;
+  font-size: 12px;
+}
+.RightBox-fareBreakup .fare-detail-card>div>p {
+  font-size: 11px;
+  margin: 0.2rem 0;
+}
+.fare-chart>div label::before {
+  content: "\f068";
+  margin-right: 3px;
+  font-size: 12px;
+}
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+.taxes-chart>div>span {
+  text-align: left;
+  width: auto;
+}
+
+.fare-chart>div span {
+  width: 40%;
+  float: left;
+  text-align: right;
+}

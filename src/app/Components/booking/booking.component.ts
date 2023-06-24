@@ -27,6 +27,7 @@ import { AuthService } from 'src/app/Services/auth.service';
 })
 export class BookingComponent implements OnInit{
 
+  isTaxChartCollapsed: boolean = true;
   passengers: PassengerModule[] = []
 
   seatselectionOption: boolean = false;
@@ -37,6 +38,10 @@ export class BookingComponent implements OnInit{
   currentseat: string = '';
   searchedflight :any;
   amount: number = 0;
+  gst!: number;
+  tax!: number;
+  totalAmount!: number;
+  totalTax!: number;
 
 
 
@@ -267,25 +272,36 @@ onSeatSelectionChange(seat: string) {
 
 
   payments() {
-    this.router.navigate(['payment', this.amount]);
+    debugger
+    this.router.navigate(['payment', this.totalAmount]);
   }
 
-  private calculateAmount() {
+  calculateAmount() {
     debugger
     for (let i = 0; i < this.passengers.length; i++) {
       this.amount += this.searchedflight[0].basePrice;
     }
+    this.TotalAmount();
   }
 
-  private calculateAmountOnAdd() {
+  calculateAmountOnAdd() {
     debugger
     this.amount += this.searchedflight[0].basePrice;
+    this.TotalAmount();
 
   }
-  private calculateAmountOnremove() {
+  calculateAmountOnremove() {
     debugger
     this.amount -= this.searchedflight[0].basePrice;
+    this.TotalAmount();
 
+  }
+  TotalAmount(){
+    this.gst = (this.amount*18)/100;
+    this.tax = (this.amount*10)/100;
+    this.totalTax = this.gst+ this.tax
+
+    this.totalAmount = this.totalTax+ this.amount
   }
 }
 

@@ -178,13 +178,69 @@
   </div>
   <div *ngIf="passengers.length > 0">
     <button mat-raised-button color="primary" (click)="payments()">
-      Amount = Pay {{ amount | currency : "₹" }}
+      Pay {{ totalAmount | currency : "₹" }}
       </button>
 
     </div>
   </div>
 </div>
+
+
+
+<div class="fare-detail-card" id="accordionExample" *ngIf="passengers.length >= 1">
+  <div class="section-heading">
+    <i class="fa fa-pricebreakup mr-2"></i>
+    Fare Breakup
+  </div>
+    <div class="pb-0">
+      <p>Include all taxes, (Subject to airline fare rules)</p>
+      <label>Passengers</label>
+    </div>
+    <div class="py-0 fare-detail-head">
+      <strong >Adult: {{passengers.length}}</strong>
+    </div>
+    <div class="fare-chart pt-0">
+      <div >
+        <strong >Base Fare</strong>
+        <span>{{amount | currency : "₹" }}</span>
+      </div>
+      <div>
+        <label (click)="isTaxChartCollapsed = !isTaxChartCollapsed" [attr.aria-expanded]="!isTaxChartCollapsed" [class.collapsed]="isTaxChartCollapsed">Taxes &amp; Fees</label>
+        <span>₹ {{totalTax}}</span>
+        <div class="taxes-chart-wrap card" [class.collapse]="isTaxChartCollapsed" id="collapsetax" [attr.aria-hidden]="isTaxChartCollapsed" >
+          <div class="taxes-chart">
+            <div>
+              <span>Airport Dev. Fee</span>
+              <span>₹ 0.00</span>
+            </div>
+            <div>
+              <span>Fuel Surcharge</span>
+              <span>₹ 0.00</span>
+            </div>
+            <div>
+              <span>GST</span>
+              <span>{{gst | currency : "₹" }}</span>
+            </div>
+            <div>
+              <span>Other</span>
+              <span>{{tax | currency : "₹" }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <strong>Total Payable</strong>
+        <span id="tl">{{totalAmount | currency : "₹" }}</span>
+      </div>
+    </div>
+  </div>
+
 </div>
+
+
+
+
+
 
 </div>
 

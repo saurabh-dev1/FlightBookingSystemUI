@@ -46,9 +46,12 @@ export class PaymentComponent {
 
 
     getAmount(){
+      debugger
       this.activeRoute.paramMap.subscribe((res) => {
         let amount = res.get('amount');
+        debugger
         if (amount !== null) {
+          debugger
           this.amount = +amount;
         }
       });
