@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { BookingService } from 'src/app/Services/booking/booking.service';
 import { FlightsService } from 'src/app/Services/flights/flights.service';
 import { FlightModule } from 'src/app/models/flight/flight.module';
 import { BookingModule } from 'src/app/models/flightbooking/booking/booking.module';
-import { UserModule } from 'src/app/models/user/user/user.module';
 import { UsersService } from 'src/app/Services/Users/users.service';
 import { AuthService } from 'src/app/Services/auth.service';
 
@@ -15,6 +14,9 @@ import { AuthService } from 'src/app/Services/auth.service';
   styleUrls: ['./booking-list.component.css']
 })
 export class BookingListComponent implements OnInit{
+
+
+
 
   flights: FlightModule ={
     flightId: 0,
@@ -47,6 +49,7 @@ export class BookingListComponent implements OnInit{
 
   bookings: BookingModule[] = [];
   // tusers: UserModule[]=[];
+
 
   ngOnInit(): void {
 

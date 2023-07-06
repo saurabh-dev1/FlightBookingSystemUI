@@ -14,6 +14,7 @@ import { BookingComponent } from './Components/booking/booking.component';
 import { BookingListComponent } from './Components/booking/bookingList/booking-list/booking-list.component';
 import { PaymentComponent } from './Components/Payments/payment/payment.component';
 import { AuthGuard } from './Guards/auth.guard';
+import { UserBookingsComponent } from './Components/booking/UserBooking/user-bookings/user-bookings.component';
 
 
 
@@ -95,6 +96,11 @@ const routes: Routes = [
   {
     path: 'payment/:amount',
     component: PaymentComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'userBooking',
+    component: UserBookingsComponent,
     canActivate: [AuthGuard]
   }
 ];

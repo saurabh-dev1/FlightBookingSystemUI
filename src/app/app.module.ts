@@ -14,6 +14,8 @@ import { FlightsComponent } from './Components/flights/flights.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { ToastrModule } from 'ngx-toastr';
 import { MaterialModule } from 'src/material/material.module';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgToastModule } from 'ng-angular-popup';
 import { AddFlightsComponent } from './Components/flights/add-flights/add-flights.component';
 import { EditFlightsComponent } from './Components/flights/edit-flights/edit-flights.component';
@@ -23,6 +25,7 @@ import { BookingComponent } from './Components/booking/booking.component';
 import { BookingListComponent } from './Components/booking/bookingList/booking-list/booking-list.component';
 import { PaymentComponent } from './Components/Payments/payment/payment.component';
 import { TokenInterceptor } from './Interceptors/token.interceptor';
+import { UserBookingsComponent } from './Components/booking/UserBooking/user-bookings/user-bookings.component';
 
 
 
@@ -44,6 +47,7 @@ import { TokenInterceptor } from './Interceptors/token.interceptor';
     BookingComponent,
     BookingListComponent,
     PaymentComponent,
+    UserBookingsComponent,
 
 
 
@@ -57,6 +61,8 @@ import { TokenInterceptor } from './Interceptors/token.interceptor';
     HttpClientModule,
     ToastrModule.forRoot(),
     MaterialModule,
+    MatTableModule,
+    MatPaginatorModule,
     NgToastModule,
     FormsModule,
 

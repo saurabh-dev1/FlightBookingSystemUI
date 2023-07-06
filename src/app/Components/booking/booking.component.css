@@ -104,7 +104,8 @@
 }
 .mat-mdc-card {
   position: relative;
-  background-color: skyblue;
+  background: linear-gradient(-45deg,#332b67,#28558e,#332b67,#28558e);
+  color: #ccc;
 }
 .title {
   display: flex;

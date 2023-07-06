@@ -23,4 +23,8 @@ export class BookingService {
   getBookings() : Observable<BookingModule[]>{
     return this.httpClient.get<BookingModule[]>(this.baseApiUrl + '/FlightBooking');
   }
+
+  getBookingByUser(userId : number): Observable<BookingModule>{
+    return this.httpClient.get<BookingModule>(this.baseApiUrl + '/FlightBooking/User/'+ userId);
+  }
 }
