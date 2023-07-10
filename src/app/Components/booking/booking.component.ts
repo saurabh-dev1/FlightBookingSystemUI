@@ -11,7 +11,7 @@ import { FlightModule } from 'src/app/models/flight/flight.module';
 import { FlightsService } from 'src/app/Services/flights/flights.service';
 import { NgToastService } from 'ng-angular-popup';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { AuthService } from 'src/app/Services/auth.service';
+import { AuthService } from 'src/app/Services/Auth/auth.service';
 
 
 @Component({
@@ -36,7 +36,7 @@ export class BookingComponent implements OnInit{
   cols: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   rows: string[] = [];
   currentseat: string = '';
-  searchedflight :any;
+  searchedflight:any;
   amount: number = 0;
   gst!: number;
   tax!: number;
@@ -49,10 +49,10 @@ export class BookingComponent implements OnInit{
   constructor(private authService: AuthService,
     private builder: FormBuilder,
      private router: Router,
-     private DataService: DataService,
     private bookingService: BookingService,
     private passengerService: PassengersService,
     private dataService: DataService,
+    private flightService: FlightsService,
     private toast:NgToastService) {
 
 
@@ -66,8 +66,11 @@ export class BookingComponent implements OnInit{
 
     }
     selectedSeats: string[] = [];
+    occupiedseatslist: string[] = [];
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+      this.occupiedseats();
+    }
     // add passenger form
     AddPassengerForm = this.builder.group({
       firstName: this.builder.control('', Validators.required),
@@ -237,7 +240,7 @@ onSeatSelectionChange(seat: string) {
 
   //disabling seats
   isSeatDisabled(seat: string) {
-    if (this.selectedSeats.length >= 6) {
+    if (this.selectedSeats.length >= 6 || this.checkseatsoccupied(seat)) {
       if (this.selectedSeats.includes(seat)) {
         return false;
       }
@@ -303,6 +306,57 @@ onSeatSelectionChange(seat: string) {
 
     this.totalAmount = this.totalTax+ this.amount
   }
+
+
+  occupiedseats() {
+    debugger
+    this.flightService
+      .getoccupiedseatsbyflightid(this.searchedflight[0].flightId)
+
+      .subscribe((res:any) => {
+        debugger
+        console.log('seats' + res);
+        if (res) {
+          this.occupiedseatslist = res;
+          debugger;
+          console.log('seats' + this.occupiedseatslist);
+          debugger;
+        }
+      });
+  }
+
+  checkseatsoccupied(seat: string) {
+
+    if (this.occupiedseatslist.includes(seat)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isseatchecked(seat: string): boolean {
+
+    return this.occupiedseatslist.includes(seat);
+  }
+
+  isSeatOccupied(seat: string): boolean {
+
+    return this.occupiedseatslist.includes(seat);
+  }
+
+  isSelectedSeat(seat: string): boolean {
+    return this.selectedSeats.includes(seat);
+  }
+
+  getSeatLabel(seat: string): string {
+    if (this.checkseatsoccupied(seat)) {
+      return '🧑‍💼';
+    } else {
+      return seat;
+    }
+  }
+
+
 }
 
 

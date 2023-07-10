@@ -102,6 +102,10 @@
   flex: 0 0 calc(50% - 10px);
 
 }
+.occupied-seat {
+  background-color: #067f46;
+  cursor: not-allowed;
+}
 .mat-mdc-card {
   position: relative;
   background: linear-gradient(-45deg,#332b67,#28558e,#332b67,#28558e);

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
-import { AuthService } from 'src/app/Services/auth.service';
+import { AuthService } from 'src/app/Services/Auth/auth.service';
 
 @Component({
   selector: 'app-sign-up',

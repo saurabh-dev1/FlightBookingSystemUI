@@ -5,7 +5,7 @@ import { BookingModule } from 'src/app/models/flightbooking/booking/booking.modu
 import { UserModule } from 'src/app/models/user/user/user.module';
 import { FlightModule } from 'src/app/models/flight/flight.module';
 import { FlightsService } from 'src/app/Services/flights/flights.service';
-import { AuthService } from 'src/app/Services/auth.service';
+import { AuthService } from 'src/app/Services/Auth/auth.service';
 
 
 @Component({

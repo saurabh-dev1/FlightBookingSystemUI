@@ -51,4 +51,7 @@ export class FlightsService {
     this.selectedflight.next(obj);
   }
 
+  getoccupiedseatsbyflightid(flightId : number): Observable<FlightModule>{
+    return this.httpClient.get<FlightModule>(this.baseApiUrl + '/Flight/selectedSeats/'+ flightId);
+  }
 }

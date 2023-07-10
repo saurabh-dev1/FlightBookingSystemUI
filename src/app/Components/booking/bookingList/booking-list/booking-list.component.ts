@@ -4,7 +4,7 @@ import { FlightsService } from 'src/app/Services/flights/flights.service';
 import { FlightModule } from 'src/app/models/flight/flight.module';
 import { BookingModule } from 'src/app/models/flightbooking/booking/booking.module';
 import { UsersService } from 'src/app/Services/Users/users.service';
-import { AuthService } from 'src/app/Services/auth.service';
+import { AuthService } from 'src/app/Services/Auth/auth.service';
 
 
 

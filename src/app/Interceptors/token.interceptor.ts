@@ -7,7 +7,7 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
-import { AuthService } from '../Services/auth.service';
+import { AuthService } from '../Services/Auth/auth.service';
 import { NgToastService } from 'ng-angular-popup';
 import { Router } from '@angular/router';
 

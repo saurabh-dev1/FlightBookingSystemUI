@@ -26,6 +26,7 @@ import { BookingListComponent } from './Components/booking/bookingList/booking-l
 import { PaymentComponent } from './Components/Payments/payment/payment.component';
 import { TokenInterceptor } from './Interceptors/token.interceptor';
 import { UserBookingsComponent } from './Components/booking/UserBooking/user-bookings/user-bookings.component';
+import { NavbarComponent } from './Components/navbar/navbar.component';
 
 
 
@@ -48,6 +49,7 @@ import { UserBookingsComponent } from './Components/booking/UserBooking/user-boo
     BookingListComponent,
     PaymentComponent,
     UserBookingsComponent,
+    NavbarComponent,
 
 
 

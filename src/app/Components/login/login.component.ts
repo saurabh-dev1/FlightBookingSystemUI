@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
-import { AuthService } from 'src/app/Services/auth.service';
+import { AuthService } from 'src/app/Services/Auth/auth.service';
+import { UserStoreService } from 'src/app/Services/UserStore/user-store.service';
 import { UserModule } from 'src/app/models/user/user/user.module';
 
 
@@ -16,7 +17,10 @@ export class LoginComponent implements OnInit {
   loginform!: FormGroup;
 
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private router :Router, private toast:NgToastService){}
+  constructor(private fb: FormBuilder, private auth: AuthService,
+    private router :Router,
+    private toast:NgToastService,
+    private userStore: UserStoreService){}
 
 
 
@@ -63,6 +67,10 @@ export class LoginComponent implements OnInit {
           this.result = res
           console.log(res);
           this.auth.storeToken(res.token);
+
+        let tokenPayload = this.auth.decodedToken();
+          this.userStore.setNameForStore(tokenPayload.unique_name);
+          this.userStore.setRoleForStore(tokenPayload.role);
 
           sessionStorage.setItem('userId', res.userId);
           console.log(res.message);

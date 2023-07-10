@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import DataService from 'src/app/Services/Data/data.service';
-import { AuthService } from 'src/app/Services/auth.service';
+import { AuthService } from 'src/app/Services/Auth/auth.service';
 import { FlightsService } from 'src/app/Services/flights/flights.service';
 import { PaymentService } from 'src/app/Services/payment/payment.service';
 import { PaymentModule } from 'src/app/models/Payments/payment/payment.module';

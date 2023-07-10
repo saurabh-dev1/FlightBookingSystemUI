@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AuthService } from 'src/app/Services/auth.service';
+import { AuthService } from 'src/app/Services/Auth/auth.service';
 import { BookingService } from 'src/app/Services/booking/booking.service';
 import { BookingModule } from 'src/app/models/flightbooking/booking/booking.module';
 

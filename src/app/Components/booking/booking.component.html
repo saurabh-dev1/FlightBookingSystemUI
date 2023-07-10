@@ -1,32 +1,4 @@
-<nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
-  <div class="container-fluid">
-    <div id="logo">
-      <a routerLink="/dashboard"><img src="../../assets/jetsetgo.png" /></a>
-    </div>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/dashboard">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" routerLink="/userBooking" >Bookings</a>
-          </li>
-          <li class="nav-item">
-            <button (click)="logout()" class="nav-link active btn btn-danger" >LogOut</button>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</nav><!-- <mat-card class="flight-card">
+<app-navbar></app-navbar><!-- <mat-card class="flight-card">
   <div class="flight-header">
     <div class="flight-details">
       <div class="flight-name">
@@ -79,12 +51,13 @@
             <mat-checkbox
               [id]="row + col"
               [disabled]="isSeatDisabled(row + col)"
+              [checked]="isseatchecked(row + col)"
               (change)="onSeatSelectionChange(row + col)"
               class="checkbox"
               color="primary"
               [@fadeIn]
-            >
-              <div class="checkbox-label">{{ row }}{{ col }}</div>
+              [ngClass]="{ 'occupied-seat': checkseatsoccupied(row + col) }">
+              <div class="checkbox-label">{{ getSeatLabel(row + col) }}</div>
             </mat-checkbox>
           </mat-grid-tile>
         </ng-container>
@@ -92,6 +65,58 @@
     </mat-grid-list>
   </div>
 </div>
+<!--
+<div class="col-md-4 seatpickerdescriptionwraper">
+  <div class="instructions"><h2>Instructions :-</h2></div>
+  <p>
+    <mat-checkbox
+      [disabled]="false"
+      [checked]="true"
+      class="checkbox"
+      [@enterAnimation]
+      [ngClass]="{ 'occupied-seat': false }"
+    >
+      <div class="checkboxlabel">Z4</div>
+    </mat-checkbox>
+    <span style="margin-left: 5px"> selected seat</span>
+  </p>
+  <p>
+    <mat-checkbox
+      [disabled]="true"
+      class="checkbox"
+      [@enterAnimation]
+      [ngClass]="{ 'occupied-seat': false }"
+    >
+      <div class="checkboxlabel">Z4</div>
+    </mat-checkbox>
+    <span style="margin-left: 5px">disabled seat</span>
+  </p>
+  <p>
+    <mat-checkbox
+      [disabled]="true"
+      [checked]="true"
+      class="checkbox"
+      [@enterAnimation]
+      [ngClass]="{ 'occupied-seat': true }"
+    >
+      <div class="checkboxlabel">🧑‍💼</div>
+    </mat-checkbox>
+    <span style="margin-left: 5px"> seat occupied</span>
+  </p>
+  <p>
+    <mat-checkbox
+      [disabled]="true"
+      [checked]="false"
+      class="checkboxhover"
+      [@enterAnimation]
+      [ngClass]="{ 'occupied-seat': false }"
+    >
+      <div class="checkboxlabel">Z4</div>
+    </mat-checkbox>
+    <span style="margin-left: 5px"> On hover</span>
+  </p>
+</div> -->
+
 
 <div class="row">
   <div class="selected-seats">

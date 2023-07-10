@@ -3,10 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import DataService from 'src/app/Services/Data/data.service';
-import { AuthService } from 'src/app/Services/auth.service';
+import { AuthService } from 'src/app/Services/Auth/auth.service';
 import { BookingService } from 'src/app/Services/booking/booking.service';
 import { FlightsService } from 'src/app/Services/flights/flights.service';
 import { FlightModule } from 'src/app/models/flight/flight.module';
+import { UserStoreService } from 'src/app/Services/UserStore/user-store.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +18,8 @@ export class DashboardComponent {
 
   constructor( private flightService: FlightsService,private bookingService: BookingService, private router: Router,private builder:FormBuilder, private DataService: DataService,
     private authService: AuthService,
-    private toastService: NgToastService) {}
+    private toastService: NgToastService,
+    ) {}
 
     searchflightsform!: FormGroup;
 
@@ -37,6 +39,17 @@ export class DashboardComponent {
 }
 
 
+cityValidator(builder: FormGroup) {
+  const departureCity = builder.get('departureCity')?.value;
+  const arrivalCity = builder.get('arrivalCity')?.value;
+
+  if (departureCity && arrivalCity && departureCity.toLowerCase() === arrivalCity.toLowerCase()) {
+    return { invalidCities: true };
+  }
+
+  return null;
+}
+
 
   ngOnInit(): void {
     this.searchflightsform = this.builder.group({
@@ -44,6 +57,8 @@ export class DashboardComponent {
       arrivalCity: ['',Validators.required],
       departureDateTime: ['',Validators.required],
     });
+
+
 
   }
 
@@ -93,16 +108,6 @@ debugger
     }
 
 
-    cityValidator(builder: FormGroup) {
-      const departureCity = builder.get('departureCity')?.value;
-      const arrivalCity = builder.get('arrivalCity')?.value;
-
-      if (departureCity && arrivalCity && departureCity.toLowerCase() === arrivalCity.toLowerCase()) {
-        return { invalidCities: true };
-      }
-
-      return null;
-    }
 
 
 
