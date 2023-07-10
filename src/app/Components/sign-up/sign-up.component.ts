@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { AuthService } from 'src/app/Services/Auth/auth.service';
+import { EmailService } from 'src/app/Services/Email/email.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,7 +13,10 @@ import { AuthService } from 'src/app/Services/Auth/auth.service';
 export class SignUpComponent implements OnInit{
 
   signUpform!: FormGroup;
-  constructor(private fb: FormBuilder, private auth: AuthService, private router : Router, private toast:NgToastService){}
+  constructor(private fb: FormBuilder, private auth: AuthService,
+    private router : Router,
+    private toast:NgToastService,
+    private emailService: EmailService){}
 
   ngOnInit(): void {
     this.signUpform = this.fb.group({
@@ -57,7 +61,7 @@ export class SignUpComponent implements OnInit{
           console.log(res.message);
           this.signUpform.reset();
           this.toast.success({detail:"SUCCESS", summary:"please Login now!" ,duration: 5000});
-          debugger
+
           this.router.navigate(['Login'])
         },
         error: (err) =>{

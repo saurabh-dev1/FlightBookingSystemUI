@@ -8,6 +8,7 @@ import { FlightsService } from 'src/app/Services/flights/flights.service';
 import { PaymentService } from 'src/app/Services/payment/payment.service';
 import { PaymentModule } from 'src/app/models/Payments/payment/payment.module';
 import { FlightModule } from 'src/app/models/flight/flight.module';
+import { EmailService } from 'src/app/Services/Email/email.service';
 
 @Component({
   selector: 'app-payment',
@@ -22,12 +23,15 @@ export class PaymentComponent {
   payment: PaymentModule = new PaymentModule();
   status: boolean = false;
 
+
+
   constructor(private authService: AuthService,
     private dataService: DataService,
     private paymentService: PaymentService,
     private activeRoute: ActivatedRoute,
     private builder: FormBuilder,
-    private toast: NgToastService){
+    private toast: NgToastService,
+    private emailService : EmailService){
 
       this.dataService.Data$.subscribe((res) => {
         debugger
@@ -106,7 +110,22 @@ export class PaymentComponent {
           console.log(res);
           if(res){
             debugger
-            this.toast.success({detail:'Payment Success'})
+            this.toast.success({detail:'Payment Success'});
+            let subject = "Flight Booked"
+            let body = "Congretulation!! Flight Booked Successfully"
+            let email = sessionStorage.getItem('email');
+
+            let message = {email, subject, body}
+            debugger
+            this.emailService.sendEmail(message).subscribe({
+              next:(res)=>{
+                debugger
+                  console.log(res)
+              },
+              error:(err)=>{
+                console.log(err)
+              }
+            })
           }else{
             debugger
             this.toast.warning({detail: 'try again!!'})
