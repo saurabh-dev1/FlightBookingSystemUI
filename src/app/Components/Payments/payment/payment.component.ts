@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import DataService from 'src/app/Services/Data/data.service';
 import { AuthService } from 'src/app/Services/Auth/auth.service';
@@ -9,6 +9,7 @@ import { PaymentService } from 'src/app/Services/payment/payment.service';
 import { PaymentModule } from 'src/app/models/Payments/payment/payment.module';
 import { FlightModule } from 'src/app/models/flight/flight.module';
 import { EmailService } from 'src/app/Services/Email/email.service';
+import {jsPDF} from "jspdf";
 
 @Component({
   selector: 'app-payment',
@@ -16,6 +17,8 @@ import { EmailService } from 'src/app/Services/Email/email.service';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent {
+
+
 
   searchedFlight!: any;
   amount: number = 0;
@@ -25,13 +28,15 @@ export class PaymentComponent {
 
 
 
+
   constructor(private authService: AuthService,
     private dataService: DataService,
     private paymentService: PaymentService,
     private activeRoute: ActivatedRoute,
     private builder: FormBuilder,
     private toast: NgToastService,
-    private emailService : EmailService){
+    private emailService : EmailService,
+    private router: Router){
 
       this.dataService.Data$.subscribe((res) => {
         debugger
@@ -111,21 +116,23 @@ export class PaymentComponent {
           if(res){
             debugger
             this.toast.success({detail:'Payment Success'});
+
+            debugger
             let subject = "Flight Booked"
-            let body = "Congretulation!! Flight Booked Successfully"
+            let body = "Congratulation!! Flight Booked Successfully ,download your ticket ";
             let email = sessionStorage.getItem('email');
 
             let message = {email, subject, body}
             debugger
             this.emailService.sendEmail(message).subscribe({
               next:(res)=>{
-                debugger
-                  console.log(res)
+
               },
               error:(err)=>{
                 console.log(err)
               }
             })
+            this.router.navigate(['Ticket']);
           }else{
             debugger
             this.toast.warning({detail: 'try again!!'})
@@ -134,6 +141,7 @@ export class PaymentComponent {
         );
       }
     }
+
 
 
   logout(){

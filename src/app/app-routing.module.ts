@@ -15,6 +15,7 @@ import { BookingListComponent } from './Components/booking/bookingList/booking-l
 import { PaymentComponent } from './Components/Payments/payment/payment.component';
 import { AuthGuard } from './Guards/auth.guard';
 import { UserBookingsComponent } from './Components/booking/UserBooking/user-bookings/user-bookings.component';
+import { TicketComponent } from './Components/Ticket/ticket/ticket.component';
 
 
 
@@ -101,6 +102,11 @@ const routes: Routes = [
   {
     path: 'userBooking',
     component: UserBookingsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'Ticket',
+    component: TicketComponent,
     canActivate: [AuthGuard]
   }
 ];

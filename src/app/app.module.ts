@@ -27,6 +27,7 @@ import { PaymentComponent } from './Components/Payments/payment/payment.componen
 import { TokenInterceptor } from './Interceptors/token.interceptor';
 import { UserBookingsComponent } from './Components/booking/UserBooking/user-bookings/user-bookings.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
+import { TicketComponent } from './Components/Ticket/ticket/ticket.component';
 
 
 
@@ -50,6 +51,7 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
     PaymentComponent,
     UserBookingsComponent,
     NavbarComponent,
+    TicketComponent,
 
 
 
