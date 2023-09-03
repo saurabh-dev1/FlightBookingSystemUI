@@ -68,7 +68,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let booking of bookings">
+                <tr *ngFor="let booking of bookings |  paginate :{itemsPerPage : 10 , currentPage : p} ">
                   <td>{{booking.flightBookingId}}</td>
                   <td>{{booking.departureCity}}</td>
                   <td>{{booking.arrivalCity}}</td>
@@ -84,12 +84,16 @@
                 </tr>
               </tbody>
             </table>
+            <pagination-controls (pageChange)="p= $event"></pagination-controls>
             <div class="container">
               <div class="details-container">
               <div class="flight-details">
-                <mat-card *ngIf="selectedFlightId" class="selected-flight-card">
+                <mat-card *ngIf="selectedFlightId !== null" class="selected-flight-card">
                   <mat-card-header>
                     <mat-card-title>Flight Details</mat-card-title>
+                    <div class="ml-auto">
+                    <button class="btn-close" aria-label="Close" (click)="selectedFlightId = null"></button>
+                  </div>
                   </mat-card-header>
                   <mat-card-content>
                     <p><strong>Flight ID:</strong> {{flights.flightId}}</p>
@@ -103,9 +107,10 @@
               </div>
 
               <div class="user-details">
-                <mat-card *ngIf="selectedUserId" class="selected-flight-card">
+                <mat-card *ngIf="selectedUserId !== null" class="selected-flight-card">
                   <mat-card-header>
                     <mat-card-title>User Details</mat-card-title>
+                    <button class="btn-close" aria-label="Close" (click)="selectedUserId = null"></button>
                   </mat-card-header>
                   <mat-card-content>
                     <p><strong>User ID:</strong> {{users.userId}}</p>

@@ -73,6 +73,7 @@ export class LoginComponent implements OnInit {
           this.userStore.setRoleForStore(tokenPayload.role);
 
           sessionStorage.setItem('userId', res.userId);
+          debugger
           console.log(res.message);
           debugger
 

@@ -15,7 +15,7 @@ import { AuthService } from 'src/app/Services/Auth/auth.service';
 })
 export class BookingListComponent implements OnInit{
 
-
+ p : number =1
 
 
   flights: FlightModule ={
@@ -44,7 +44,9 @@ export class BookingListComponent implements OnInit{
  users: any;
 
 
-  constructor (private authService: AuthService, private bookingService: BookingService, private flightService: FlightsService, private userService: UsersService){}
+  constructor (private authService: AuthService, private bookingService: BookingService,
+    private flightService: FlightsService,
+    private userService: UsersService){}
 
 
   bookings: BookingModule[] = [];
@@ -69,7 +71,7 @@ export class BookingListComponent implements OnInit{
    }
 
    // get flight by id
-   selectedFlightId = 0;
+   selectedFlightId : number| null = null;
    showFlightDetails(flightId: number) {
     debugger
     this.flightService.getFlight(flightId)
@@ -84,7 +86,7 @@ export class BookingListComponent implements OnInit{
   }
 
    //get user by id
-   selectedUserId = 0;
+   selectedUserId : number| null = null;
    showUserDetails(userId: number) {
     debugger
     this.userService.getUserById(userId)
@@ -92,6 +94,13 @@ export class BookingListComponent implements OnInit{
             this.selectedUserId = userId;
             this.users = res;
             console.log(res);
+            debugger
+            sessionStorage.setItem('phoneNo', this.users.phoneNo);
+            console.log(sessionStorage)
+            console.log(sessionStorage.getItem('phoneNo'))
+            let mobileNo : string |null = sessionStorage.getItem('phoneNo') ;
+            console.log(mobileNo);
+            debugger
           },
           (error) => {
             console.log(error);

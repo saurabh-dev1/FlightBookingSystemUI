@@ -63,6 +63,7 @@
                 <th scope="col">Departure Date</th>
                 <th scope="col">Departure Time</th>
                 <th scope="col">Total Seats</th>
+                <!-- <th scope="col">Available Seats</th> -->
                 <th scope="col">Price</th>
                 <th> </th>
               </tr>
@@ -77,6 +78,7 @@
                 <td>{{flight.departureDateTime | date:'dd-MM-yyyy' }}</td>
                 <td>{{flight.departureDateTime | date:'HH:mm' }}</td>
                 <td>{{flight.totalSeats}}</td>
+                <!-- <td>{{flight.availableSeats}}</td> -->
                 <td>{{flight.basePrice}}</td>
                 <td><button class="btn btn-primary" type = "submit" (click)="editFlight(flight.flightId)">View</button>
                     </td>

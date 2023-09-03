@@ -253,14 +253,14 @@ onSeatSelectionChange(seat: string) {
 
   //add passenger opiton
   addPassengerOption(seat: string) {
-    debugger
+  
     this.currentseat = seat;
     this.passengerAddOption = !this.passengerAddOption;
   }
 
   //for button
   getButtonStyle(seat: string) {
-    debugger
+
     if (seat === this.currentseat) {
       return { 'background-color': 'green', 'color': '#fff' };
     } else {

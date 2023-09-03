@@ -10,6 +10,8 @@ import { PaymentModule } from 'src/app/models/Payments/payment/payment.module';
 import { FlightModule } from 'src/app/models/flight/flight.module';
 import { EmailService } from 'src/app/Services/Email/email.service';
 import {jsPDF} from "jspdf";
+import { UsersService } from 'src/app/Services/Users/users.service';
+import { UserStoreService } from 'src/app/Services/UserStore/user-store.service';
 
 @Component({
   selector: 'app-payment',
@@ -25,17 +27,20 @@ export class PaymentComponent {
   paymentForm!: FormGroup;
   payment: PaymentModule = new PaymentModule();
   status: boolean = false;
+  name!: any
 
 
 
 
   constructor(private authService: AuthService,
+    private userService: UsersService,
     private dataService: DataService,
     private paymentService: PaymentService,
     private activeRoute: ActivatedRoute,
     private builder: FormBuilder,
     private toast: NgToastService,
     private emailService : EmailService,
+    private userStoreService : UserStoreService,
     private router: Router){
 
       this.dataService.Data$.subscribe((res) => {
@@ -118,10 +123,80 @@ export class PaymentComponent {
             this.toast.success({detail:'Payment Success'});
 
             debugger
-            let subject = "Flight Booked"
-            let body = "Congratulation!! Flight Booked Successfully ,download your ticket ";
-            let email = sessionStorage.getItem('email');
+            let currentDate = new Date();
+            let departureDate = new Date(this.searchedFlight.departureDateTime);
 
+// Format the date as "YYYY-MM-DD"
+            let formattedDepartureDate = departureDate.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
+            let id: number | null = this.convertToNumberfromstring(sessionStorage.getItem('bookingId') );
+            let mobileNo : string |null = sessionStorage.getItem('phoneNo') ;
+
+
+            this.name = this.userStoreService.getNameFromStore()
+            console.log(this.name.source._value);
+            let subject = "Ticket Confirmation"
+            let body = `Dear ${this.name.source._value},
+
+
+            We are excited to confirm your flight booking with JetSetGo! Your travel details are as follows:
+
+
+            <table width="100%" cellpadding="4">
+          <tbody>
+              <tr>
+                <td style="border-bottom:1px solid #ccc;font:9px arial"><b>Booking Id. :</b>
+                </td>
+                <td style="border-bottom:1px solid #ccc;font:9px arial"><span>${id}</span>
+
+                </td>
+
+                <td style="border-bottom:1px solid #ccc;font:9px arial"><b>Flight Name / No. : </b>
+
+                </td>
+                <td style="border-bottom:1px solid #ccc;font:9px arial"><span>${this.searchedFlight.flightName} / ${this.searchedFlight.flightNumber}</span>
+
+
+              </td>
+
+                <TR>
+
+              <td style="border-bottom:1px solid #ccc;font:9px arial"><b>Date &amp; Time of Booking : </b>
+
+              </td>
+
+              <td style="border-bottom:1px solid #ccc;font:9px arial"><span>${currentDate.getDate()} ${currentDate.getHours()}:${currentDate.getMinutes()} HRS</span>
+
+              </td>
+
+
+
+              <td style="border-bottom:1px solid #ccc;font:9px arial"><b>From : </b>
+              </td>
+              <td style="border-bottom:1px solid #ccc;font:9px arial"><span>${this.searchedFlight.departureCity}</span>
+
+              </td>
+              </TR>
+                  <TR>
+              <td style="border-bottom:1px solid #ccc;font:9px arial"><b>Date of Journey : </b>
+
+              </td>
+              <td style="border-bottom:1px solid #ccc;font:9px arial"><span>${formattedDepartureDate}</span>
+
+
+              </td> <td style="border-bottom:1px solid #ccc;font:9px arial"><b>To : </b>
+              </td>
+              <td style="border-bottom:1px solid #ccc;font:9px arial"><span>${this.searchedFlight.arrivalCity}</span>
+                 </td>
+
+              </tr><tr>
+              <td style="border-bottom:1px solid #ccc;font:9px arial"><b>Mobile No :</b></td>
+              <td style="border-bottom:1px solid #ccc;font:9px arial"><span>${mobileNo}</span></td>
+
+              <td style="border-bottom:1px solid #ccc;font:9px arial"><b>No. of Passenger : </b> </td>
+              <td style="border-bottom:1px solid #ccc;font:9px arial"><span>1</span> </td>
+             </tr><tr></tr></tbody></table> `;
+            let email = sessionStorage.getItem('email');
+            debugger
             let message = {email, subject, body}
             debugger
             this.emailService.sendEmail(message).subscribe({
@@ -149,3 +224,9 @@ export class PaymentComponent {
   }
 
 }
+
+
+
+
+
+

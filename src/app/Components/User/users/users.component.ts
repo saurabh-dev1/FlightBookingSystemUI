@@ -18,10 +18,13 @@ export class UsersComponent implements OnInit{
     this.userService.getUser()
     .subscribe({
       next: (users) =>{
+        console.log(users)
         this.users = users;
+
       },
       error:(res) =>{
         console.log(res);
+
       }
     })
   }

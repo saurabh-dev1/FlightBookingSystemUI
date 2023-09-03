@@ -1,4 +1,33 @@
- #flight{
-  width:595px;
-  height:842px
- }
+
+
+
+
+/* Style for the #flight div */
+#flight {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* Style for the h1 inside #flight */
+#flight h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+/* Style for the button */
+button {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Hover effect for the button */
+button:hover {
+  background-color: #218838;
+}

@@ -28,7 +28,7 @@ import { TokenInterceptor } from './Interceptors/token.interceptor';
 import { UserBookingsComponent } from './Components/booking/UserBooking/user-bookings/user-bookings.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { TicketComponent } from './Components/Ticket/ticket/ticket.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -69,6 +69,7 @@ import { TicketComponent } from './Components/Ticket/ticket/ticket.component';
     MatPaginatorModule,
     NgToastModule,
     FormsModule,
+    NgxPaginationModule
 
 
   ],
