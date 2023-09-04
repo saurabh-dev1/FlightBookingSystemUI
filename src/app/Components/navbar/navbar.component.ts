@@ -11,17 +11,29 @@ export class NavbarComponent {
 
   name: string ="";
   role: string ="";
+  check! :boolean
   constructor(private authService: AuthService,
     private userStore : UserStoreService){}
 
     ngOnInit(): void {
 
+
+
       this.userStore.getNameFromStore().subscribe(
         val =>{
           const getNameFromToken = this.authService.getNameFromToken();
           this.name = val || getNameFromToken
+
         }
       )
+
+      if(this.authService.isLoggedIn())
+      {
+        this.check=true;
+      }
+      else{
+        this.check=false;
+      }
 
       this.userStore.getRoleFromStore().subscribe(
         val =>{

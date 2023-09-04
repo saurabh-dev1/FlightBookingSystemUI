@@ -23,6 +23,7 @@ import { TicketComponent } from './Components/Ticket/ticket/ticket.component';
 const routes: Routes = [
   {
     path: '',
+
     component: HomePageComponent
   },
 
@@ -82,6 +83,7 @@ const routes: Routes = [
   },
   {
     path: 'flightSearched',
+    
     component: FlightSearchedComponent
   },
   {

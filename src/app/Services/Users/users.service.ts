@@ -10,13 +10,14 @@ export class UsersService {
 
   constructor(private httpClient: HttpClient) { }
 
-  private baseApiUrl = "http://localhost:5238/api"
+  private baseApiUrl = "https://flight-system-app.azurewebsites.net/api"
 
   getUser(): Observable<UserModule[]>{
     return this.httpClient.get<UserModule[]>(this.baseApiUrl + '/User');
   }
 
   getUserById(userId: number): Observable<UserModule[]>{
+    debugger
     return this.httpClient.get<UserModule[]>(this.baseApiUrl + '/User/' +userId);
   }
 

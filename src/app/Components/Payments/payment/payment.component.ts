@@ -12,6 +12,8 @@ import { EmailService } from 'src/app/Services/Email/email.service';
 import {jsPDF} from "jspdf";
 import { UsersService } from 'src/app/Services/Users/users.service';
 import { UserStoreService } from 'src/app/Services/UserStore/user-store.service';
+import { PassengersService } from 'src/app/Services/passengers/passengers.service';
+import { PassengerModule } from 'src/app/models/passenger/passenger.module';
 
 @Component({
   selector: 'app-payment',
@@ -28,14 +30,15 @@ export class PaymentComponent {
   payment: PaymentModule = new PaymentModule();
   status: boolean = false;
   name!: any
-
-
+  passengers: PassengerModule[] = []
+  users: any;
 
 
   constructor(private authService: AuthService,
     private userService: UsersService,
     private dataService: DataService,
     private paymentService: PaymentService,
+    private passengerService: PassengersService,
     private activeRoute: ActivatedRoute,
     private builder: FormBuilder,
     private toast: NgToastService,
@@ -71,6 +74,31 @@ export class PaymentComponent {
       });
     }
 
+    //get user details
+
+    showUserDetails() {
+
+      let uId = this.convertToNumberfromstring(sessionStorage.getItem('userId'))
+      debugger
+      if(uId!=null){
+      this.userService.getUserById(uId)
+            .subscribe( (res) => {
+
+              this.users = res;
+              console.log(res);
+              debugger
+              sessionStorage.setItem('phoneNo', this.users.phoneNo);
+              console.log(sessionStorage)
+              console.log(sessionStorage.getItem('phoneNo'))
+
+              debugger
+            },
+            (error) => {
+              console.log(error);
+            })
+          }
+    }
+
     convertToNumberfromstring(value: string | null): number | null {
       if (value === null) {
         return null;
@@ -87,9 +115,9 @@ export class PaymentComponent {
 
     paymentform() {
       this.paymentForm = this.builder.group({
-        cardNumber: this.builder.control('', Validators.required),
-        expirationDate: this.builder.control('', Validators.required),
-        cvv: this.builder.control('', Validators.required),
+        cardNumber: this.builder.control('',  [Validators.required, Validators.pattern(/^\d{16}$/)]),
+        expirationDate: this.builder.control('', [Validators.required, Validators.pattern(/^(0[1-9]|1[0-2])\/\d{2}$/)]),
+        cvv: this.builder.control('',  [Validators.required, Validators.pattern(/^\d{3}$/)]),
         cardName: this.builder.control('', Validators.required),
         amount: this.builder.control({value: this.amount, disabled: true}, Validators.required),
       });
@@ -101,6 +129,22 @@ export class PaymentComponent {
       if(this.paymentForm.valid){
         debugger
         let bid =  this.convertToNumberfromstring(sessionStorage.getItem('bookingId'))
+
+
+        if(bid!==null){
+          this.showUserDetails();
+          this.passengerService.getPassenger(bid).subscribe((res: any) => {
+            if (res) {
+              debugger
+
+              this.passengers = res;
+            } else {
+              this.toast.warning(res.message);
+            }
+          });
+
+        }
+
         let bookId: number;
 
         if (bid !== null) {
@@ -122,11 +166,13 @@ export class PaymentComponent {
             debugger
             this.toast.success({detail:'Payment Success'});
 
+
+
             debugger
             let currentDate = new Date();
             let departureDate = new Date(this.searchedFlight.departureDateTime);
 
-// Format the date as "YYYY-MM-DD"
+        // Format the date as "YYYY-MM-DD"
             let formattedDepartureDate = departureDate.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
             let id: number | null = this.convertToNumberfromstring(sessionStorage.getItem('bookingId') );
             let mobileNo : string |null = sessionStorage.getItem('phoneNo') ;
@@ -219,9 +265,15 @@ export class PaymentComponent {
 
 
 
+
+
   logout(){
     this.authService.signOut();
   }
+
+
+
+
 
 }
 

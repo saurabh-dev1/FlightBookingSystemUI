@@ -7,7 +7,7 @@ import { PassengerModule } from 'src/app/models/passenger/passenger.module';
   providedIn: 'root'
 })
 export class PassengersService {
-  private baseApiUrl = "http://localhost:5238/api"
+  private baseApiUrl = "https://flight-system-app.azurewebsites.net/api"
   constructor(private httpClient: HttpClient) { }
 
   getPassengers() : Observable<PassengerModule[]>{
@@ -23,6 +23,7 @@ export class PassengersService {
   }
 
   getPassenger(passengerId: number): Observable<PassengerModule>{
-    return this.httpClient.get<PassengerModule>(this.baseApiUrl + '/Passenger/' + passengerId);
+    debugger
+    return this.httpClient.get<PassengerModule>(this.baseApiUrl + '/Passenger/FlightBooking/' + passengerId);
   }
 }

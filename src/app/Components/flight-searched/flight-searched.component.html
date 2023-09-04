@@ -1,38 +1,41 @@
-<app-navbar></app-navbar>
 
-<div id="booking">
-<div class="container">
-  <h2>Flight Search Results</h2>
+  <app-navbar></app-navbar>
 
-  <div *ngIf=" flights.length > 0">
-    <div class="card mb-3" *ngFor="let flight of flights">
-      <div class="card-body">
-        <div class="flight-info">
-          <div>
-            <h5 class="flight-name">Flight: {{ flight.flightName }}</h5>
-            <p class="departure-arrival">
-              <span class="departure">Departure: {{ flight.departureCity }}</span>
-              <span class="dotted-line"></span>
-              <span class="arrival">Arrival: {{ flight.arrivalCity }}</span>
-              <span class="dotted-line"></span>
-              <span class="departTime">departure Time: {{flight.departureDateTime | date:'HH:mm' }}</span>
-              <span class="dotted-line"></span>
-              <span class="arrivalTime">Arrival time: {{flight.arrivalDateTime | date:'HH:mm' }}</span>
-            </p>
-            <p class="departure-date">Departure Date: {{ flight.departureDateTime | date: 'yyyy-MM-dd' }}</p>
-            <p class="departure-date">Total Seats: {{ flight.totalSeats}}</p>
-          </div>
-          <div class="booking">
-            <p class="price">Price: {{ flight.basePrice }}</p>
-            <button class="btn btn-primary" type = "submit" (click)="booking(flight)">Book Flight</button>
+  <div id="booking">
+    <div class="container">
+      <h2>Flight Search Results</h2>
+
+      <div *ngIf="flights.length > 0">
+        <div class="card mb-3" *ngFor="let flight of flights">
+          <div class="card-body">
+            <div class="flight-info">
+              <div>
+                <h5 class="flight-name">Flight: {{ flight.flightName }}</h5>
+                <p class="departure-arrival">
+                  <span class="departure">Departure: {{ flight.departureCity }}</span>
+                  <span class="dotted-line"></span>
+                  <span class="arrival">Arrival: {{ flight.arrivalCity }}</span>
+                </p>
+                <p class="departure-arrival">
+                  <span class="departTime">Departure Time: {{ flight.departureDateTime | date:'HH:mm' }}</span>
+                  <span class="dotted-line"></span>
+                  <span class="arrivalTime">Arrival Time: {{ flight.arrivalDateTime | date:'HH:mm' }}</span>
+                </p>
+                <p class="departure-date">Departure Date: {{ flight.departureDateTime | date: 'yyyy-MM-dd' }}</p>
+                <p class="total-seats">Total Seats: {{ flight.totalSeats }}</p>
+              </div>
+              <div class="booking">
+                <p class="price">Price: {{ flight.basePrice }}</p>
+                <button class="btn btn-primary" type="submit" (click)="booking(flight)">Book Flight</button>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+
+      <div *ngIf="flights.length === 0" class="no-flights">
+        <p>No flights found.</p>
       </div>
     </div>
   </div>
 
-  <div *ngIf="flights.length === 0" class="no-flights">
-    <p>No flights found.</p>
-  </div>
-</div>
-</div>

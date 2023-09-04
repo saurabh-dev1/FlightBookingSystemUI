@@ -75,9 +75,9 @@ export class BookingComponent implements OnInit{
     AddPassengerForm = this.builder.group({
       firstName: this.builder.control('', Validators.required),
       lastName: this.builder.control('', Validators.required),
-      age: this.builder.control('',Validators.required),
+      age: this.builder.control('',[Validators.required, Validators.min(0), Validators.max(100)]),
       gender: this.builder.control('',Validators.required),
-      phoneNumber: this.builder.control('',Validators.required),
+      phoneNumber: this.builder.control('', [Validators.required,Validators.pattern(/^[7896]\d{9}$/)]),
       allocatedSeat: '',
       userId: 0,
       bookingId: 0
@@ -253,7 +253,7 @@ onSeatSelectionChange(seat: string) {
 
   //add passenger opiton
   addPassengerOption(seat: string) {
-  
+
     this.currentseat = seat;
     this.passengerAddOption = !this.passengerAddOption;
   }

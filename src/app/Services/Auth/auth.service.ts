@@ -9,7 +9,7 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 })
 export class AuthService {
 
-  private baseUrl:string = "http://localhost:5238/api/Auth/";
+  private baseUrl:string = "https://flight-system-app.azurewebsites.net/api/Auth/";
   private userPayload: any
   constructor(private http : HttpClient, private router: Router) {
     this.userPayload = this.decodedToken();

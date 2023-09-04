@@ -8,7 +8,7 @@ import { BookingModule } from 'src/app/models/flightbooking/booking/booking.modu
 })
 export class BookingService {
 
-  private baseApiUrl = "http://localhost:5238/api"
+  private baseApiUrl = "https://flight-system-app.azurewebsites.net/api"
   constructor(private httpClient: HttpClient) { }
 
   addBooking(addBookingRequest : BookingModule): Observable<any>{

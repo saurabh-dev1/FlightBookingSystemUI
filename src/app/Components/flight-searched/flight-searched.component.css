@@ -1,17 +1,22 @@
+/* Reset some default styles */
 body {
   background-color: #f5f5f5;
   margin: 0;
   padding: 0;
+  font-family: 'Lato', sans-serif;
 }
 
+/* Styles for the main container */
 .container {
   max-width: 900px;
   margin: 0 auto;
   padding: 20px;
   background-color: #ffffff;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
 
+/* Styles for flight cards */
 .card {
   background-color: #ffffff;
   padding: 20px;
@@ -21,8 +26,15 @@ body {
   border-radius: 5px;
 }
 
+/* Hover effect for flight cards */
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Styles for flight information */
 .flight-info {
   display: flex;
+  flex-wrap: wrap; /* Ensure content wraps to the next line on small screens */
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
@@ -38,125 +50,37 @@ body {
 .flight-name {
   font-weight: bold;
   color: #333333;
+  flex-basis: 100%; /* Make it full width on small screens */
+  margin-bottom: 10px;
 }
 
-.flight-number {
-  font-weight: bold;
-  color: #333333;
+/* Add media query for screens smaller than 768px (typical mobile screens) */
+@media (max-width: 768px) {
+  .flight-info {
+    flex-direction: column; /* Stack content vertically on small screens */
+    text-align: center; /* Center text on small screens */
+  }
+
+  .flight-name {
+    margin-top: 10px; /* Add some spacing between items on small screens */
+  }
 }
 
+/* Styles for departure and arrival information */
 .departure-arrival {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
 }
 
 .departure,
-.arrival {
-  font-weight: bold;
-  color: #333333;
-}
-.booking{
-  margin-left: 10%;
-}
-
-.departure::before,
-.arrival::before,
-.departTime::before,
-.arrivalTime::before{
-  content: '';
-  display: inline-block;
-  width: 10px;
-  height: 2px;
-  background-color: #333333;
-  margin-right: 5px;
-}
-
-.departure::before {
-  border-radius: 0;
-}
-
-.arrival::before,
-.departTime::before,
-.arrivalTime::before{
-  border-radius: 0;
-  margin-left: 5px;
-}
-
-.dotted-line {
-  width: 100%;
-  height: 1px;
-  background-color: transparent;
-  border-top: 1px dotted #333333;
-  flex-grow: 1;
-  margin: 0 10px;
-}
-
-.departure-date {
-  margin-bottom: 10px;
-  color: #800000;
-}
-
-.total-seats,
-.price {
-  font-weight: bold;
-  color: #dc3545;
-}
-
-.no-flights {
-  text-align: center;
-  font-size: 18px;
-  color: #666666;
-  margin-top: 20px;
-}
-
-h2 {
-  text-align: center;
-  font-size: 28px;
-  margin-bottom: 30px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  color: #333333;
-}
-
-.card {
-  background-color: #ffffff;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
-  border-radius: 5px;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: #333333;
-}
-
-.departure-info {
-  display: flex;
-  align-items: center;
-}
-
-.departure-arrival {
-  display: flex;
-  justify-content: space-between;
-}
-
-.departure, .arrival,
+.arrival,
 .departTime,
-.arrivalTime{
+.arrivalTime {
   font-weight: bold;
   color: #333;
 }
 
-.departTime{
+.departTime {
   color: #007bff;
 }
 
@@ -172,6 +96,7 @@ h2 {
   color: #28a745;
 }
 
+/* Styles for price and no-flights message */
 .price {
   font-weight: bold;
   font-size: 18px;
@@ -185,7 +110,17 @@ h2 {
   margin-top: 20px;
 }
 
+/* Background gradient for the booking section */
+#booking {
+  font-family: 'Lato', sans-serif;
+  background-image: url('/assets/background.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #191a1e;
+  height: 92.5vh;
+}
 
+/* Additional styling for the container */
 .container:before {
   content: "";
   position: fixed;
@@ -199,15 +134,5 @@ h2 {
   border-radius: 10px; /* Add border-radius for a curvy shape */
 }
 
-
-
-
-
-#booking {
-	font-family: 'Lato', sans-serif;
-	background-image: url('/assets/background.jpg');
-	background-size: cover;
-	background-position: center;
-	color: #191a1e;
-  height: 92.5vh;
-}
+/* Your existing CSS styles */
+/* ... */

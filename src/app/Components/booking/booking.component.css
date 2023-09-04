@@ -425,3 +425,61 @@ div {
   float: left;
   text-align: right;
 }
+
+body {
+  font-family: 'Lato', sans-serif;
+  background-image: url('/assets/background.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #191a1e;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Updated styles for mobile devices */
+@media screen and (max-width: 600px) {
+  .row,
+  .row2 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .seats-container,
+  .selected-seats,
+  .passenger-form,
+  .passenger-details {
+    width: 100%;
+    margin-left: 0; /* Remove the left margin on mobile */
+  }
+
+  .selected-seats {
+    margin-left: 0; /* Remove the left margin on mobile */
+    margin-top: 20px; /* Add some top margin for spacing */
+  }
+
+  .fare-detail-card,
+  .right-searchbarbtm,
+  .terms-wrap {
+    margin-left: 0; /* Remove the left margin on mobile */
+  }
+
+  /* Additional mobile-specific styles can be added here */
+}
+
+/* Styles for larger screens (tablets, desktops, etc.) */
+@media screen and (min-width: 601px) {
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  .row2 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  /* ... (Other styles for larger screens) */
+}

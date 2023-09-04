@@ -8,7 +8,7 @@ import { FlightModule } from 'src/app/models/flight/flight.module';
   providedIn: 'root'
 })
 export class PaymentService {
-  private baseApiUrl = "http://localhost:5238/api"
+  private baseApiUrl = "https://flight-system-app.azurewebsites.net/api"
   constructor(private httpClient: HttpClient) { }
 
   addPayment(addPaymentRequest : PaymentModule): Observable<PaymentModule>{

@@ -94,13 +94,7 @@ export class BookingListComponent implements OnInit{
             this.selectedUserId = userId;
             this.users = res;
             console.log(res);
-            debugger
-            sessionStorage.setItem('phoneNo', this.users.phoneNo);
-            console.log(sessionStorage)
-            console.log(sessionStorage.getItem('phoneNo'))
-            let mobileNo : string |null = sessionStorage.getItem('phoneNo') ;
-            console.log(mobileNo);
-            debugger
+
           },
           (error) => {
             console.log(error);

@@ -206,3 +206,58 @@ div {
   background-color: #dc3545;
   color: #fff;
 }
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Add a global style to make fonts more readable on smaller screens */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Style for the container to center the content and add some spacing */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Add responsiveness for the booking card */
+.booking-detail-card {
+  background: #fff;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+/* Make the card width 100% on small screens */
+@media (max-width: 768px) {
+  .booking-detail-card {
+      width: 100%;
+      margin-left: 0;
+  }
+}
+
+/* Style for the payment card */
+.payment-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 16px;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+/* Make the payment card responsive */
+@media (max-width: 768px) {
+  .payment-card {
+      width: 100%;
+      margin-left: 0;
+  }
+}
+

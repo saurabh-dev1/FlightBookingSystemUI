@@ -1,46 +1,4 @@
-<app-navbar></app-navbar><!-- <mat-card class="flight-card">
-  <div class="flight-header">
-    <div class="flight-details">
-      <div class="flight-name">
-        {{ searchedflight.flightName }}
-      </div>
-      <div class="airport-details">
-        {{ searchedflight.departureCity }} - {{ searchedflight.arrivalCity}}
-      </div>
-      <div class="price">{{ searchedflight.basePrice | currency : "₹" }}</div>
-    </div>
-    <div class="flightseatscount">
-      Seats:{{ searchedflight.totalSeats }}
-    </div>
-  </div>
-  <div class="flight-schedule">
-    <div class="scheduleitem">
-      <div class="schedulelabel">
-        From: <strong>{{ searchedflight.departureCity }}</strong>
-      </div>
-      <div class="scheduledate">
-        {{ searchedflight.departureDateTime | date : "yyyy-MM-dd" }}
-      </div>
-      <div class="scheduletime">
-        {{ searchedflight.departureDateTime | date : "HH:mm" }}
-      </div>
-    </div>
-    <div class="spacer">
-      <mat-icon class="flighticon">flight </mat-icon>
-    </div>
-    <div class="scheduleitem">
-      <div class="schedulelabel">
-        To: <strong>{{ searchedflight.arrivalCity }}</strong>
-      </div>
-      <div class="scheduledate">
-        {{ searchedflight.arrivalDateTime | date : "yyyy-MM-dd" }}
-      </div>
-      <div class="scheduletime">
-        {{ searchedflight.arrivalDateTime | date : "HH:mm" }}
-      </div>
-    </div>
-  </div>
-</mat-card> -->
+<app-navbar></app-navbar>
 <div id="booking">
 <div class="row">
   <div class="seats-container">
@@ -65,57 +23,6 @@
     </mat-grid-list>
   </div>
 </div>
-<!--
-<div class="col-md-4 seatpickerdescriptionwraper">
-  <div class="instructions"><h2>Instructions :-</h2></div>
-  <p>
-    <mat-checkbox
-      [disabled]="false"
-      [checked]="true"
-      class="checkbox"
-      [@enterAnimation]
-      [ngClass]="{ 'occupied-seat': false }"
-    >
-      <div class="checkboxlabel">Z4</div>
-    </mat-checkbox>
-    <span style="margin-left: 5px"> selected seat</span>
-  </p>
-  <p>
-    <mat-checkbox
-      [disabled]="true"
-      class="checkbox"
-      [@enterAnimation]
-      [ngClass]="{ 'occupied-seat': false }"
-    >
-      <div class="checkboxlabel">Z4</div>
-    </mat-checkbox>
-    <span style="margin-left: 5px">disabled seat</span>
-  </p>
-  <p>
-    <mat-checkbox
-      [disabled]="true"
-      [checked]="true"
-      class="checkbox"
-      [@enterAnimation]
-      [ngClass]="{ 'occupied-seat': true }"
-    >
-      <div class="checkboxlabel">🧑‍💼</div>
-    </mat-checkbox>
-    <span style="margin-left: 5px"> seat occupied</span>
-  </p>
-  <p>
-    <mat-checkbox
-      [disabled]="true"
-      [checked]="false"
-      class="checkboxhover"
-      [@enterAnimation]
-      [ngClass]="{ 'occupied-seat': false }"
-    >
-      <div class="checkboxlabel">Z4</div>
-    </mat-checkbox>
-    <span style="margin-left: 5px"> On hover</span>
-  </p>
-</div> -->
 
 
 <div class="row">
@@ -162,13 +69,20 @@
           </mat-form-field>
           <mat-form-field class="input-field">
             <mat-label>Gender</mat-label>
-            <input matInput type="text" formControlName="gender" />
+            <mat-select formControlName="gender">
+              <mat-option value="male">Male</mat-option>
+              <mat-option value="female">Female</mat-option>
+              <mat-option value="transgender">Transgender</mat-option>
+            </mat-select>
           </mat-form-field>
         </div>
         <div class="input-group">
           <mat-form-field class="input-field">
             <mat-label>Phone number</mat-label>
             <input matInput type="tel" formControlName="phoneNumber" />
+            <mat-error *ngIf="AddPassengerForm.get('phoneNumber')?.hasError('pattern')" >
+        Invalid Phone No.
+      </mat-error>
           </mat-form-field>
         </div>
         <div class="submit-container">

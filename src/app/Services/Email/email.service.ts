@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class EmailService {
 
-  private baseApiUrl = "http://localhost:5238/api"
+  private baseApiUrl = "https://flight-system-app.azurewebsites.net/api"
   constructor(private httpClient: HttpClient) { }
 
   sendEmail(email:any){
